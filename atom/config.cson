@@ -1,0 +1,62 @@
+"*":
+  "atom-ide-ui":
+    "atom-ide-code-format":
+      formatOnType: false
+    "atom-ide-datatip":
+      datatipInteractedWithDebounceDelay: 600
+    "atom-ide-outline-view": {}
+    hyperclick:
+      darwinTriggerKeys: "ctrlKey,metaKey"
+    use:
+      "atom-ide-diagnostics-ui": false
+  core:
+    disabledPackages: [
+      "ide-flowtype"
+      "linter-eslint"
+    ]
+    ignoredNames: [
+      ".git"
+      ".hg"
+      ".svn"
+      ".DS_Store"
+      "._*"
+      "Thumbs.db"
+      "desktop.ini"
+      "node_modules"
+    ]
+  "custom-tabs":
+    template: "<%= path.basename(fileName, path.extname(fileName)) %>\\<%= filePath.split(path.sep).slice(-3, -1).reverse().join(\"\\\\\") %>"
+  "custom-title":
+    template: "<%= filePath.split('/').slice(-4).join('/') %><% if (gitHead) { %> — [<%= gitHead %>]<% } %>"
+  editor:
+    fontSize: 16
+    softWrap: false
+    softWrapAtPreferredLineLength: true
+    tabLength: 4
+  "exception-reporting":
+    userId: "7cfd337a-34f4-4382-b6f5-9aad83df42fe"
+  "language-babel":
+    createTargetDirectories: false
+  "linter-ui-default": {}
+  "prettier-atom":
+    formatOnSaveOptions:
+      enabled: true
+      showInStatusBar: true
+    prettierOptions:
+      singleQuote: true
+    useEslint: true
+  welcome:
+    showOnStartup: false
+  whitespace:
+    ignoreWhitespaceOnCurrentLine: false
+".js.jsx.source":
+  editor:
+    autoIndent: true
+    softWrapAtPreferredLineLength: false
+".languagebabel.ttlextension":
+  editor:
+    softWrapAtPreferredLineLength: true
+".plain.text":
+  editor:
+    softWrap: true
+    softWrapAtPreferredLineLength: true
