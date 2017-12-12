@@ -97,8 +97,7 @@ source $ZSH/oh-my-zsh.sh
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-if [ -f ~/.bashrc ]; then
-    source ~/.bashrc
-else
-    echo "~/.bashrc file not found"
-fi
+# alias setup
+THIS_DIR=$(dirname $0)
+
+source $THIS_DIR/aliases.sh
