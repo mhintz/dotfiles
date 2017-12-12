@@ -22,6 +22,8 @@ alias pip2up="pip2 install --upgrade pip; pip2 freeze --local | grep -v '^\-e' |
 # - zsh
 alias refresh='source ~/.zshrc'
 
+alias lsl='ls -la'
+
 # - Cargo
 alias cgoc='cargo clean'
 alias cgob='cargo build'

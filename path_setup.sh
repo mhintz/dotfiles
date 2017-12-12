@@ -16,7 +16,7 @@ export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 export RUST_BACKTRACE=1 # Rust error backtraces on by default
 
 # - NODE_PATH management
-export NODE_PATH="/usr/local/lib/node_modules:$NODE_PATH"
+# export NODE_PATH="/usr/local/lib/node_modules:$NODE_PATH"
 
 # - GOPATH
 export GOPATH="$HOME/code/go"
