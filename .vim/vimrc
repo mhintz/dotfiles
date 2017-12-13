@@ -1,0 +1,45 @@
+set nocompatible
+
+let mapleader = " "
+
+filetype plugin indent on
+syntax on
+set encoding=utf-8
+
+" reloads when a file is changed in the background
+set autoread
+
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+set incsearch
+set hlsearch
+
+set backspace=indent,eol,start
+set whichwrap+=<,>
+
+set autoindent
+
+set backup
+
+set history=50
+
+set ruler
+set showcmd
+
+set undodir=$HOME/.vim/.undo//
+set backupdir=$HOME/.vim/.backup//
+set directory^=$HOME/.vim/.swp//
+
+set scrolloff=3
+nnoremap <C-N> 3<C-Y>
+nnoremap <C-M> 3<C-E>
+
+nnoremap <C-A> _
+nnoremap <C-E> $
+
+inoremap <C-A> <C-O>_
+inoremap <C-E> <C-O>$
+
