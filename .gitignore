@@ -1,3 +1,6 @@
+.vim/autoload/pathogen.vim
+.vim/.netrwhist
 .vim/.backup
 .vim/.swp
 .vim/.undo
+

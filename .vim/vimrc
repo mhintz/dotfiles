@@ -1,24 +1,26 @@
-set nocompatible
+execute pathogen#infect()
+" generate documentation for all pathogen-installed plugins
+Helptags
 
-let mapleader = " "
+" this might be unnecessary, but it's nice to be clear
+set nocompatible
 
 filetype plugin indent on
 syntax on
 set encoding=utf-8
 
+colorscheme iceberg
+
 " reloads when a file is changed in the background
 set autoread
 
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
+" incremental search
 set incsearch
-set hlsearch
+" highlighted search
+" set hlsearch
 
 set backspace=indent,eol,start
-set whichwrap+=<,>
+set whichwrap+=<,>,h,l
 
 set autoindent
 
@@ -34,12 +36,50 @@ set backupdir=$HOME/.vim/.backup//
 set directory^=$HOME/.vim/.swp//
 
 set scrolloff=3
-nnoremap <C-N> 3<C-Y>
-nnoremap <C-M> 3<C-E>
 
-nnoremap <C-A> _
-nnoremap <C-E> $
+let mapleader = " "
 
-inoremap <C-A> <C-O>_
+nnoremap <C-P> :NERDTreeToggle<CR>
+
+nnoremap <silent> <C-C> :nohlsearch
+
+" manually reload vim config
+nnoremap <leader>r :source ~/.vim/vimrc<CR> 
+
+" use backspace to delete in normal mode
+nnoremap <BS> X
+
+" move between windows
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" move between tabs
+nnoremap <C-M-Left> :tabp
+nnoremap <C-M-Right> :tabn
+
+" scrolling
+nnoremap <C-N> 3<C-E>M
+nnoremap <C-M> 3<C-Y>M
+
+" start / end of line movement
+noremap <C-A> ^
+noremap <C-E> $
+
+inoremap <C-A> <C-O>^
 inoremap <C-E> <C-O>$
+
+" move lines of text around vertically
+nmap <M-j> mz:m+<cr>`z
+nmap <M-k> mz:m-2<cr>`z
+vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
+vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+
+if has("mac") || has("macunix")
+	nmap <D-j> <M-j>
+	nmap <D-k> <M-k>
+	vmap <D-j> <M-j>
+	vmap <D-k> <M-k>
+endif
 
