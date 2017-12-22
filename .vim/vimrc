@@ -1,3 +1,10 @@
+" Things to do:
+" Install all packages as submodules
+" Set up NERDTree config options
+" Read through spf13 vim config and apply the useful stuff from it
+" Set up alt-delete and alt-movements in insert mode the way you like them
+" Add comments explaining everything
+
 execute pathogen#infect()
 " generate documentation for all pathogen-installed plugins
 Helptags
@@ -20,7 +27,7 @@ set incsearch
 " set hlsearch
 
 set backspace=indent,eol,start
-set whichwrap+=<,>,h,l
+set whichwrap+=<,>
 
 set autoindent
 
@@ -37,11 +44,24 @@ set directory^=$HOME/.vim/.swp//
 
 set scrolloff=3
 
+" allow files to be open as buffers without being visible 
+set hidden
+
 let mapleader = " "
 
-nnoremap <C-P> :NERDTreeToggle<CR>
+" plugin settings and commands
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_working_path_mode = 'a'
 
-nnoremap <silent> <C-C> :nohlsearch
+nnoremap <C-o> :NERDTreeToggle<CR>
+
+nnoremap <silent> <C-C> :nohlsearch<CR>
+
+let g:ackprg = 'ag --vimgrep --smart-case'
+cnoreabbrev ag Ack
+cnoreabbrev aG Ack
+cnoreabbrev Ag Ack
+cnoreabbrev AG Ack
 
 " manually reload vim config
 nnoremap <leader>r :source ~/.vim/vimrc<CR> 
@@ -49,19 +69,22 @@ nnoremap <leader>r :source ~/.vim/vimrc<CR>
 " use backspace to delete in normal mode
 nnoremap <BS> X
 
+nnoremap <M-BS> db
+inoremap <M-BS> <C-O><M-BS>
+
 " move between windows
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+nnoremap <C-J> <C-W>j
+nnoremap <C-K> <C-W>k
+nnoremap <C-L> <C-W>l
+nnoremap <C-H> <C-W>h
 
 " move between tabs
-nnoremap <C-M-Left> :tabp
-nnoremap <C-M-Right> :tabn
+nnoremap <C-M-Left> :tabp<CR>
+nnoremap <C-M-Right> :tabn<CR>
 
 " scrolling
-nnoremap <C-N> 3<C-E>M
-nnoremap <C-M> 3<C-Y>M
+nnoremap <C-N> 5<C-E>M
+nnoremap <C-M> 5<C-Y>M
 
 " start / end of line movement
 noremap <C-A> ^
