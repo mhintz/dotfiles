@@ -1,5 +1,4 @@
 " Things to do:
-" Install all packages as submodules
 " Set up NERDTree config options
 " Read through spf13 vim config and apply the useful stuff from it
 " Set up alt-delete and alt-movements in insert mode the way you like them
@@ -16,8 +15,10 @@ filetype plugin indent on
 syntax on
 set encoding=utf-8
 
+colorscheme one
 set background=dark
-colorscheme onedark
+
+let g:airline_theme='one'
 
 " reloads when a file is changed in the background
 set autoread
