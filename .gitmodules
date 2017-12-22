@@ -8,9 +8,18 @@
 [submodule ".vim/bundle/onedark"]
 	path = .vim/bundle/onedark
 	url = https://github.com/joshdick/onedark.vim
-[submodule ".vim/bundle/lightline"]
-	path = .vim/bundle/lightline
-	url = git@github.com:itchyny/lightline.vim.git
 [submodule ".vim/bundle/ctrlp"]
 	path = .vim/bundle/ctrlp
 	url = git@github.com:ctrlpvim/ctrlp.vim.git
+[submodule ".vim/bundle/ack"]
+	path = .vim/bundle/ack
+	url = git@github.com:mileszs/ack.vim.git
+[submodule ".vim/bundle/tmuxline"]
+	path = .vim/bundle/tmuxline
+	url = git@github.com:edkolev/tmuxline.vim.git
+[submodule ".vim/bundle/vim-airline"]
+	path = .vim/bundle/vim-airline
+	url = git@github.com:vim-airline/vim-airline.git
+[submodule ".vim/bundle/vim-one"]
+	path = .vim/bundle/vim-one
+	url = git@github.com:rakr/vim-one.git
