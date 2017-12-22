@@ -16,7 +16,8 @@ filetype plugin indent on
 syntax on
 set encoding=utf-8
 
-colorscheme iceberg
+set background=dark
+colorscheme onedark
 
 " reloads when a file is changed in the background
 set autoread

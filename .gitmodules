@@ -1,1 +1,16 @@
 
+[submodule ".vim/bundle/nerdtree"]
+	path = .vim/bundle/nerdtree
+	url = git@github.com:scrooloose/nerdtree.git
+[submodule ".vim/bundle/wordmotion"]
+	path = .vim/bundle/wordmotion
+	url = git@github.com:chaoren/vim-wordmotion.git
+[submodule ".vim/bundle/ctrlp"]
+	path = .vim/bundle/ctrlp
+	url = git@github.com:kien/ctrlp.vim.git
+[submodule ".vim/bundle/onedark"]
+	path = .vim/bundle/onedark
+	url = https://github.com/joshdick/onedark.vim
+[submodule ".vim/bundle/lightline"]
+	path = .vim/bundle/lightline
+	url = git@github.com:itchyny/lightline.vim.git
