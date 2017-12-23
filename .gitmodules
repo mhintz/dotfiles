@@ -23,3 +23,6 @@
 [submodule ".vim/bundle/vim-one"]
 	path = .vim/bundle/vim-one
 	url = git@github.com:rakr/vim-one.git
+[submodule ".vim/bundle/vim-polyglot"]
+	path = .vim/bundle/vim-polyglot
+	url = https://github.com/sheerun/vim-polyglot
