@@ -3,6 +3,12 @@
 " Read through spf13 vim config and apply the useful stuff from it
 " Set up alt-delete and alt-movements in insert mode the way you like them
 " Add comments explaining everything
+" set up vim-one colors: https://github.com/rakr/vim-one
+" set up vim-one tmux snd tmuxline support
+" read this:
+" http://homeonrails.com/2016/05/truecolor-in-gnome-terminal-tmux-and-neovim/
+" set up vim-airline: https://github.com/vim-airline/vim-airline
+"
 
 execute pathogen#infect()
 " generate documentation for all pathogen-installed plugins
