@@ -92,36 +92,31 @@ nnoremap <M-BS> db
 inoremap <M-BS> <C-O><M-BS>
 
 " move between windows
-nnoremap <C-J> <C-W>j
-nnoremap <C-K> <C-W>k
-nnoremap <C-L> <C-W>l
-nnoremap <C-H> <C-W>h
+nmap <M-j> <C-W>j
+nmap <M-k> <C-W>k
+nmap <M-l> <C-W>l
+nmap <M-h> <C-W>h
 
 " move between tabs
 nnoremap <C-M-Left> :tabp<CR>
 nnoremap <C-M-Right> :tabn<CR>
 
 " scrolling
-nnoremap <C-N> 5<C-E>M
-nnoremap <C-M> 5<C-Y>M
+nnoremap <C-N> 5<C-E>5j
+nnoremap <C-M> 5<C-Y>5k
+
+nnoremap <C-j> 5j
+nnoremap <C-k> 5k
 
 " start / end of line movement
-noremap <C-A> ^
-noremap <C-E> $
+noremap <C-A> <Home>
+noremap <C-E> <End>
 
-inoremap <C-A> <C-O>^
-inoremap <C-E> <C-O>$
+inoremap <C-A> <Home>
+inoremap <C-E> <End>
 
 " move lines of text around vertically
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
-
-if has("mac") || has("macunix")
-	nmap <D-j> <M-j>
-	nmap <D-k> <M-k>
-	vmap <D-j> <M-j>
-	vmap <D-k> <M-k>
-endif
-
+nmap <C-M-j> mz:m+<cr>`z
+nmap <C-M-k> mz:m-2<cr>`z
+vmap <C-M-j> :m'>+<cr>`<my`>mzgv`yo`z
+vmap <C-M-k> :m'<-2<cr>`>my`<mzgv`yo`z
