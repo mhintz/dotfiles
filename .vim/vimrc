@@ -57,8 +57,6 @@ set backspace=indent,eol,start
 " and arrow key movement wraps around line breaks
 set whichwrap+=<,>
 
-set autoindent
-
 set history=50
 
 " vim "UI" settings
@@ -77,6 +75,13 @@ set scrolloff=3
 
 " allow files to be open as buffers without being visible 
 set hidden
+
+" indentation settings
+set autoindent
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
 
 " ****** PLUGIN SETTINGS ******
 
