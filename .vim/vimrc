@@ -21,6 +21,12 @@ filetype plugin indent on
 syntax on
 set encoding=utf-8
 
+" set up the theme and syntax highlighting
+set t_8b=[48;2;%lu;%lu;%lum
+set t_8f=[38;2;%lu;%lu;%lum
+
+let g:one_allow_italics = 1
+
 colorscheme one
 set background=dark
 
@@ -45,6 +51,7 @@ set history=50
 
 set ruler
 set showcmd
+set number
 
 set undodir=$HOME/.vim/.undo//
 set backupdir=$HOME/.vim/.backup//
@@ -61,10 +68,16 @@ let mapleader = " "
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_working_path_mode = 'a'
 
+" NERDTree Settings
 nnoremap <C-o> :NERDTreeToggle<CR>
+:let g:NERDTreeWinSize=18
+autocmd vimenter * NERDTree | wincmd l
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
+" search settings
 nnoremap <silent> <C-C> :nohlsearch<CR>
 
+" ack package settings
 let g:ackprg = 'ag --vimgrep --smart-case'
 cnoreabbrev ag Ack
 cnoreabbrev aG Ack
@@ -77,6 +90,7 @@ nnoremap <leader>r :source ~/.vim/vimrc<CR>
 " use backspace to delete in normal mode
 nnoremap <BS> X
 
+" delete whole words with meta + backspace
 nnoremap <M-BS> db
 inoremap <M-BS> <C-O><M-BS>
 
