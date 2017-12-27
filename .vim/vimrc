@@ -92,6 +92,9 @@ autocmd vimenter * NERDTree | wincmd l
 autocmd tabnew * NERDTree | wincmd l
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
+" multi-cursor settings
+let g:multi_cursor_next_key='<C-g>'
+
 " ack package settings
 " let g:ackprg = 'ag --vimgrep --smart-case'
 " cnoreabbrev ag Ack
