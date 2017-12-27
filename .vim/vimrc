@@ -8,29 +8,39 @@
 " read this:
 " http://homeonrails.com/2016/05/truecolor-in-gnome-terminal-tmux-and-neovim/
 " set up vim-airline: https://github.com/vim-airline/vim-airline
+" delete lines, etc, without overwriting current copy buffer (split the copy
+" buffer into a separate buffer?)
+" read :help filetype-overview to understand "filetype plugin indent on"
 
 execute pathogen#infect()
-" generate documentation for all pathogen-installed plugins
-" Helptags
+" to generate documentation for all pathogen-installed plugins, run :Helptags
 
 " this might be unnecessary, but it's nice to be clear
 set nocompatible
 
+" syntax highlighting
 syntax on
+
+" encoding
 set encoding=utf-8
 
 " turn on filetype, plugin, and indent
 filetype plugin indent on
 
 " set up the theme and syntax highlighting
+
+" I think this is required for vim-one
 set t_8b=[48;2;%lu;%lu;%lum
 set t_8f=[38;2;%lu;%lu;%lum
 
+" italics
 let g:one_allow_italics = 1
 
+" set the color scheme, then select the type
 colorscheme one
 set background=dark
 
+" use with vim-airline as well
 let g:airline_theme='one'
 
 " reloads when a file is changed in the background
@@ -41,13 +51,17 @@ set incsearch
 " highlighted search
 " set hlsearch
 
+" expected backspace behavior (backspace can delete over indent, eol, and the
+" start of your editing)
 set backspace=indent,eol,start
+" and arrow key movement wraps around line breaks
 set whichwrap+=<,>
 
 set autoindent
 
 set history=50
 
+" vim "UI" settings
 set ruler
 set showcmd
 set number
@@ -58,12 +72,15 @@ set undodir=$HOME/.vim/.undo//
 set backupdir=$HOME/.vim/.backup//
 set directory^=$HOME/.vim/.swp//
 
+" try to keep the cursor at least 3 lines from the edge of the window
 set scrolloff=3
 
 " allow files to be open as buffers without being visible 
 set hidden
 
-" plugin settings and commands
+" ****** PLUGIN SETTINGS ******
+
+" ctrlp settings
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_working_path_mode = 'a'
 
@@ -76,11 +93,11 @@ autocmd tabnew * NERDTree | wincmd l
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " ack package settings
-let g:ackprg = 'ag --vimgrep --smart-case'
-cnoreabbrev ag Ack
-cnoreabbrev aG Ack
-cnoreabbrev Ag Ack
-cnoreabbrev AG Ack
+" let g:ackprg = 'ag --vimgrep --smart-case'
+" cnoreabbrev ag Ack
+" cnoreabbrev aG Ack
+" cnoreabbrev Ag Ack
+" cnoreabbrev AG Ack
 
 " ****** KEYBINDINGS ******
 let mapleader = " "
