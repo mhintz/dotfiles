@@ -72,6 +72,7 @@ nnoremap <C-o> :NERDTreeToggle<CR>
 let g:NERDTreeWinSize=18
 let g:NERDTreeShowHidden=1
 autocmd vimenter * NERDTree | wincmd l
+autocmd tabnew * NERDTree | wincmd l
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " ack package settings
@@ -81,44 +82,54 @@ cnoreabbrev aG Ack
 cnoreabbrev Ag Ack
 cnoreabbrev AG Ack
 
-let mapleader = "-"
+" ****** KEYBINDINGS ******
+let mapleader = " "
 
 " manually reload vim config
 nnoremap <leader>r :source ~/.vim/vimrc<CR> 
-
-" use backspace to delete in normal mode
-nnoremap <BS> X
-
-" delete whole words with meta + backspace
-nnoremap <M-BS> db
-inoremap <M-BS> <C-O><M-BS>
+nnoremap <leader>w :w<CR>
+nnoremap <leader>q :q<CR>
 
 " move between windows
-nmap <M-j> <C-W>j
-nmap <M-k> <C-W>k
-nmap <M-l> <C-W>l
-nmap <M-h> <C-W>h
+noremap <leader>j <C-W>j
+noremap <leader>k <C-W>k
+noremap <leader>l <C-W>l
+noremap <leader>h <C-W>h
+
+" create tabs
+noremap <leader>n :tabnew<CR>
 
 " move between tabs
-nnoremap <C-M-Left> :tabp<CR>
-nnoremap <C-M-Right> :tabn<CR>
+noremap <leader><Left> :tabp<CR>
+noremap <leader><Right> :tabn<CR>
 
 " scrolling
-nnoremap <C-N> 5<C-E>5j
-nnoremap <C-M> 5<C-Y>5k
+noremap <C-n> 6<C-e>6j
+noremap <C-m> 6<C-y>6k
 
-nnoremap <C-j> 5j
-nnoremap <C-k> 5k
+noremap <C-j> 6j
+noremap <C-k> 6k
 
-" start / end of line movement
-noremap <C-A> <Home>
-noremap <C-E> <End>
+" start / end of line movement like emacs
+noremap <C-a> ^
+noremap <C-e> $
 
-inoremap <C-A> <Home>
-inoremap <C-E> <End>
+inoremap <C-a> <C-o>^
+inoremap <C-e> <C-o>$
+
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+
 
 " move lines of text around vertically
-nmap <C-M-j> mz:m+<cr>`z
-nmap <C-M-k> mz:m-2<cr>`z
-vmap <C-M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <C-M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+nnoremap <C-M-j> mz:m+<cr>`z
+nnoremap <C-M-k> mz:m-2<cr>`z
+vnoremap <C-M-j> :m'>+<cr>`<my`>mzgv`yo`z
+vnoremap <C-M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+
+" moving around in insert mode
+inoremap <M-j> <C-o>j
+inoremap <M-k> <C-o>k
+inoremap <M-b> <C-o>b
+inoremap <M-e> <C-o>e
+
