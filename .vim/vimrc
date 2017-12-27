@@ -8,11 +8,10 @@
 " read this:
 " http://homeonrails.com/2016/05/truecolor-in-gnome-terminal-tmux-and-neovim/
 " set up vim-airline: https://github.com/vim-airline/vim-airline
-"
 
 execute pathogen#infect()
 " generate documentation for all pathogen-installed plugins
-Helptags
+" Helptags
 
 " this might be unnecessary, but it's nice to be clear
 set nocompatible
@@ -62,20 +61,16 @@ set scrolloff=3
 " allow files to be open as buffers without being visible 
 set hidden
 
-let mapleader = " "
-
 " plugin settings and commands
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_working_path_mode = 'a'
 
 " NERDTree Settings
 nnoremap <C-o> :NERDTreeToggle<CR>
-:let g:NERDTreeWinSize=18
+let g:NERDTreeWinSize=18
+let g:NERDTreeShowHidden=1
 autocmd vimenter * NERDTree | wincmd l
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-" search settings
-nnoremap <silent> <C-C> :nohlsearch<CR>
 
 " ack package settings
 let g:ackprg = 'ag --vimgrep --smart-case'
@@ -83,6 +78,8 @@ cnoreabbrev ag Ack
 cnoreabbrev aG Ack
 cnoreabbrev Ag Ack
 cnoreabbrev AG Ack
+
+let mapleader = "-"
 
 " manually reload vim config
 nnoremap <leader>r :source ~/.vim/vimrc<CR> 
