@@ -5,9 +5,6 @@
 [submodule ".vim/bundle/wordmotion"]
 	path = .vim/bundle/wordmotion
 	url = git@github.com:chaoren/vim-wordmotion.git
-[submodule ".vim/bundle/onedark"]
-	path = .vim/bundle/onedark
-	url = https://github.com/joshdick/onedark.vim
 [submodule ".vim/bundle/ctrlp"]
 	path = .vim/bundle/ctrlp
 	url = git@github.com:ctrlpvim/ctrlp.vim.git
