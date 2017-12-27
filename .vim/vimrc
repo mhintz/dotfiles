@@ -16,9 +16,11 @@ execute pathogen#infect()
 " this might be unnecessary, but it's nice to be clear
 set nocompatible
 
-filetype plugin indent on
 syntax on
 set encoding=utf-8
+
+" turn on filetype, plugin, and indent
+filetype plugin indent on
 
 " set up the theme and syntax highlighting
 set t_8b=[48;2;%lu;%lu;%lum
@@ -44,14 +46,14 @@ set whichwrap+=<,>
 
 set autoindent
 
-set backup
-
 set history=50
 
 set ruler
 set showcmd
 set number
 
+set backup
+" set vim directories for undo, backup, and swap files
 set undodir=$HOME/.vim/.undo//
 set backupdir=$HOME/.vim/.backup//
 set directory^=$HOME/.vim/.swp//
