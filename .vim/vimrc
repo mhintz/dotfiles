@@ -50,7 +50,7 @@ set autoread
 " incremental search
 set incsearch
 " highlighted search
-" set hlsearch
+set hlsearch
 
 " expected backspace behavior (backspace can delete over indent, eol, and the
 " start of your editing)
@@ -75,15 +75,25 @@ set directory^=$HOME/.vim/.swp//
 " try to keep the cursor at least 3 lines from the edge of the window
 set scrolloff=3
 
-" allow files to be open as buffers without being visible 
+" allow files to be open as buffers without being visible
 set hidden
+
+" no line wrap
+set nowrap
 
 " indentation settings
 set autoindent
+set smartindent
 set tabstop=4
 set shiftwidth=4
-set softtabstop=4
 set expandtab
+set softtabstop=4
+
+" remove trailing whitespace on save
+autocmd BufWritePre * :%s/\s\+$//e
+
+" ****** SET LEADER KEY ******
+let mapleader = " "
 
 " ****** PLUGIN SETTINGS ******
 
@@ -94,11 +104,14 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standar
 let g:ctrlp_extensions = ['dir']
 
 " NERDTree Settings
-nnoremap <C-o> :NERDTreeToggle<CR>
-let g:NERDTreeWinSize=18
+nnoremap <leader>o :NERDTreeToggle<CR>
+let g:NERDTreeWinSize=20
 let g:NERDTreeShowHidden=1
+" open a NERDTree automatically (and move to the main window) when vim is
+" opened or a new tab is made
 autocmd vimenter * NERDTree | wincmd l
 autocmd tabnew * NERDTree | wincmd l
+" close the nerd tree window if it's the last one open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " multi-cursor settings
@@ -112,18 +125,22 @@ let g:multi_cursor_next_key='<C-g>'
 " cnoreabbrev AG Ack
 
 " ****** KEYBINDINGS ******
-let mapleader = " "
 
 " manually reload vim config
-nnoremap <leader>r :source ~/.vim/vimrc<CR> 
+nnoremap <leader>r :source ~/.vim/vimrc<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>
+" this command will reopen the last-edited file
+nnoremap <Leader><Leader> :e#<CR>
 
 " move between windows
 noremap <leader>j <C-W>j
 noremap <leader>k <C-W>k
 noremap <leader>l <C-W>l
 noremap <leader>h <C-W>h
+
+" clear search highlights if they add visual clutter
+noremap <leader>c :nohlsearch<CR>
 
 " create tabs
 noremap <leader>n :tabnew<CR>
@@ -132,7 +149,7 @@ noremap <leader>n :tabnew<CR>
 noremap <leader><Left> :tabp<CR>
 noremap <leader><Right> :tabn<CR>
 
-" scrolling
+" faster scrolling
 noremap <C-n> 6<C-e>6j
 noremap <C-m> 6<C-y>6k
 
@@ -166,11 +183,23 @@ vnoremap <C-M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 inoremap <M-j> <C-o>j
 inoremap <M-k> <C-o>k
 inoremap <M-b> <C-o>b
-inoremap <M-e> <C-o>e
+inoremap <M-e> <ESC>eli
 
-" there's more to these lines than meets the eye
+" while I learn, some key bindings to make me feel like home :)
+" (there's more to these lines than meets the eye)
 
 " this is <M-Right>
 inoremap f <C-o>e
 " this is <M-Left>
 inoremap b <C-o>b
+" this is <M-up>
+inoremap [1;3A <C-o>6k
+" this is <M-down>
+inoremap [1;3B <C-o>6j
+" this one's weird. It's <M-BS>
+inoremap  <C-w>
+
+" these lines provide some simple context scrolling in insert mode (I know
+" it's bad to add weird movement commands in insert mode but I can't help it)
+inoremap <M-m> <ESC>6<C-y>6ki
+inoremap <M-n> <ESC>6<C-e>6ji
