@@ -152,6 +152,7 @@ cnoremap <C-e> <End>
 
 " delete into a specific buffer (buffer d)
 nnoremap dd "ddd
+vnoremap <C-x> "xx
 
 " move lines of text around vertically
 nnoremap <C-M-j> mz:m+<cr>`z
