@@ -137,6 +137,9 @@ noremap <C-m> 6<C-y>6k
 noremap <C-j> 6j
 noremap <C-k> 6k
 
+noremap <C-M-n> 6<C-e>
+noremap <C-M-m> 6<C-y>
+
 " start / end of line movement like emacs
 noremap <C-a> ^
 noremap <C-e> $
@@ -162,3 +165,9 @@ inoremap <M-k> <C-o>k
 inoremap <M-b> <C-o>b
 inoremap <M-e> <C-o>e
 
+" there's more to these lines than meets the eye
+
+" this is <M-Right>
+inoremap f <C-o>e
+" this is <M-Left>
+inoremap b <C-o>b
