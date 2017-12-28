@@ -11,6 +11,7 @@
 " delete lines, etc, without overwriting current copy buffer (split the copy
 " buffer into a separate buffer?)
 " read :help filetype-overview to understand "filetype plugin indent on"
+" set up javascript syntax plugin
 
 execute pathogen#infect()
 " to generate documentation for all pathogen-installed plugins, run :Helptags
@@ -57,6 +58,7 @@ set backspace=indent,eol,start
 " and arrow key movement wraps around line breaks
 set whichwrap+=<,>
 
+" history settings
 set history=50
 
 " vim "UI" settings
