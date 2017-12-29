@@ -193,6 +193,7 @@ inoremap <M-j> <C-o>j
 inoremap <M-k> <C-o>k
 inoremap <M-b> <C-o>b
 inoremap <M-e> <ESC>eli
+inoremap <M-w> <C-o>w
 
 " while I learn, some key bindings to make me feel like home :)
 " (there's more to these lines than meets the eye)
