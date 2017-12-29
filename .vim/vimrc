@@ -1,19 +1,11 @@
 " Things to do:
-" Set up NERDTree config options
+" Set up NERDTree config options and shortcuts
+" consider alternative tree viewer plugins with better navigation
 " Read through spf13 vim config and apply the useful stuff from it
-" Set up alt-delete and alt-movements in insert mode the way you like them
-" Add comments explaining everything
-" set up vim-one colors: https://github.com/rakr/vim-one
-" set up vim-one tmux snd tmuxline support
-" read this:
-" http://homeonrails.com/2016/05/truecolor-in-gnome-terminal-tmux-and-neovim/
+" set up vim-one tmuxline support
 " set up vim-airline: https://github.com/vim-airline/vim-airline
-" delete lines, etc, without overwriting current copy buffer (split the copy
-" buffer into a separate buffer?)
 " read :help filetype-overview to understand "filetype plugin indent on"
-" set up javascript syntax plugin
-" set up Ctrl-P to have more search command options, or possibly setup the
-" "Command-T" plugin
+" set up Ctrl-P to have more file listing command options, or possibly setup the "Command-T" plugin
 
 execute pathogen#infect()
 " to generate documentation for all pathogen-installed plugins, run :Helptags
