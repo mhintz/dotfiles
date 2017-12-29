@@ -32,3 +32,6 @@
 [submodule ".vim/bundle/javascript"]
 	path = .vim/bundle/javascript
 	url = git@github.com:pangloss/vim-javascript.git
+[submodule ".vim/bundle/onedark"]
+	path = .vim/bundle/onedark
+	url = git@github.com:joshdick/onedark.vim.git
