@@ -12,6 +12,8 @@
 " buffer into a separate buffer?)
 " read :help filetype-overview to understand "filetype plugin indent on"
 " set up javascript syntax plugin
+" set up Ctrl-P to have more search command options, or possibly setup the
+" "Command-T" plugin
 
 execute pathogen#infect()
 " to generate documentation for all pathogen-installed plugins, run :Helptags
