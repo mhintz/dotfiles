@@ -206,13 +206,13 @@ inoremap <M-e> <ESC>eli
 " (there's more to these lines than meets the eye)
 
 " this is <M-Right>
-inoremap f <C-o>e
+" inoremap f <C-o>e
 " this is <M-Left>
-inoremap b <C-o>b
+" inoremap b <C-o>b
 " this is <M-up>
-inoremap [1;3A <C-o>6k
+" inoremap [1;3A <C-o>6k
 " this is <M-down>
-inoremap [1;3B <C-o>6j
+" inoremap [1;3B <C-o>6j
 " this one's weird. It's <M-BS>
 inoremap  <C-w>
 
