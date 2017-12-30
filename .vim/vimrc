@@ -182,6 +182,7 @@ noremap <C-M-m> 6<C-y>
 noremap <C-a> ^
 noremap <C-e> $
 
+" these bindings overwrite the ones provided by vim-rsi
 inoremap <C-a> <C-o>^
 inoremap <C-e> <C-o>$
 
@@ -193,6 +194,8 @@ nnoremap dd "ddd
 vnoremap <leader>x "xx
 nnoremap <leader>p "xgp
 
+inoremap <C-k> <C-o>d$
+
 " move lines of text around vertically
 nnoremap <C-M-j> mz:m+<cr>`z
 nnoremap <C-M-k> mz:m-2<cr>`z
@@ -202,7 +205,7 @@ vnoremap <C-M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 " moving around in insert mode
 inoremap <M-j> <C-o>j
 inoremap <M-k> <C-o>k
-inoremap <M-b> <C-o>b
+" inoremap <M-b> <C-o>b
 inoremap <M-e> <ESC>eli
 inoremap <M-w> <C-o>w
 
@@ -218,7 +221,7 @@ inoremap <M-w> <C-o>w
 " this is <M-down>
 " inoremap [1;3B <C-o>6j
 " this is <M-BS>
-inoremap  <C-w>
+" inoremap  <C-w>
 
 " these lines provide some simple context scrolling in insert mode (I know
 " it's bad to add weird movement commands in insert mode but I can't help it)
