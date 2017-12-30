@@ -11,21 +11,22 @@ execute pathogen#infect()
 " this might be unnecessary, but it's nice to be clear
 set nocompatible
 
-" syntax highlighting
-syntax on
-
 " encoding
 set encoding=utf-8
 
 " turn on filetype, plugin, and indent
 filetype plugin indent on
 
-" set up the theme and syntax highlighting
+" ***** THEME AND HIGHLIGHTING ******
 
-" I think this is required for vim-one
+" syntax highlighting
+syntax on
+
+" this is required for vim-one
 set t_8b=[48;2;%lu;%lu;%lum
 set t_8f=[38;2;%lu;%lu;%lum
 
+" get those nice colors
 set termguicolors
 
 " italics
@@ -35,7 +36,10 @@ let g:one_allow_italics = 1
 colorscheme one
 set background=dark
 
+" vim-airline theme
 let g:airline_theme='one'
+
+" ****** SETTINGS ******
 
 " reloads when a file is changed in the background
 set autoread
@@ -114,7 +118,7 @@ let g:multi_cursor_next_key='<C-g>'
 let g:tmuxline_powerline_separators = 0
 autocmd vimenter * Tmuxline iceberg full
 
-" ack package settings
+" ack package settings (for using ag instead)
 if executable('ag')
     let g:ackprg = 'ag --vimgrep'
 endif
