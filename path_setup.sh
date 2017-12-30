@@ -1,6 +1,7 @@
 echo "setting paths"
 
 export EDITOR=vim
+export VISUAL=vim
 
 # my scripts
 export PATH="~/code/scripts:$PATH"
