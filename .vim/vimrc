@@ -2,8 +2,6 @@
 " Set up NERDTree config options and shortcuts
 " consider alternative tree viewer plugins with better navigation
 " Read through spf13 vim config and apply the useful stuff from it
-" set up vim-one tmuxline support
-" set up vim-airline: https://github.com/vim-airline/vim-airline
 " read :help filetype-overview to understand "filetype plugin indent on"
 " set up Ctrl-P to have more file listing command options, or possibly setup the "Command-T" plugin
 
@@ -37,7 +35,6 @@ let g:one_allow_italics = 1
 colorscheme one
 set background=dark
 
-" use with vim-airline as well
 let g:airline_theme='one'
 
 " reloads when a file is changed in the background
@@ -112,6 +109,10 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 " multi-cursor settings
 let g:multi_cursor_next_key='<C-g>'
+
+" Tmuxline (styles get overriden incorrectly, need to refresh it on enter"
+let g:tmuxline_powerline_separators = 0
+autocmd vimenter * Tmuxline iceberg full
 
 " ack package settings
 " let g:ackprg = 'ag --vimgrep --smart-case'
