@@ -9,9 +9,10 @@ alias towero='gittower .'
 # - Cool upgrade commands
 alias brewup='brew update; brew upgrade;'
 alias npmup='npm install -g npm@latest; npm update -g;'
+alias yarnup='yarn global upgrade;'
 alias pipup="pip install --upgrade pip; pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip install -U;"
 alias pip2up="pip2 install --upgrade pip; pip2 freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs pip install -U;"
-# alias gemup='gem update'
+alias gemup='gem update'
 
 # - zsh
 alias refresh='source ~/.zshrc'
@@ -24,8 +25,6 @@ alias cgob='cargo build'
 alias cgor='cargo run'
 
 # - Git
-# alias gb='git branch'
-# alias gco='git checkout'
 alias gs='git status'
 alias gits='git status'
 alias gitd='git diff'
@@ -40,7 +39,3 @@ alias gitpl='git pull'
 alias gitpr='git pull --rebase'
 alias gitpo='git push origin'
 
-# - npm
-# alias npmi='npm install'
-# alias npmis='npm install --save'
-# alias npmisd='npm install --save-dev'
