@@ -1,5 +1,7 @@
 echo "setting paths"
 
+export EDITOR=vim
+
 # my scripts
 export PATH="~/code/scripts:$PATH"
 # homebrew

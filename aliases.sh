@@ -1,11 +1,5 @@
 echo "setting aliases"
 
-export EDITOR=emacs
-
-# - set up nvm
-export NVM_DIR="$HOME/.nvm"
-source $(brew --prefix nvm)/nvm.sh
-
 # - Shortcuts
 alias simpleserver='python2.7 -m SimpleHTTPServer 8000'
 alias sublo='subl .'
