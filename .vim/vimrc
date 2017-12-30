@@ -200,13 +200,13 @@ inoremap <M-w> <C-o>w
 
 " this is <M-Right>
 " inoremap f <C-o>e
-" this is <M-Left>
+" this is <M-Left> (unfortunately, it is <esc>b so it clashes)
 " inoremap b <C-o>b
 " this is <M-up>
 " inoremap [1;3A <C-o>6k
 " this is <M-down>
 " inoremap [1;3B <C-o>6j
-" this one's weird. It's <M-BS>
+" this is <M-BS>
 inoremap  <C-w>
 
 " these lines provide some simple context scrolling in insert mode (I know
