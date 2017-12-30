@@ -115,11 +115,13 @@ let g:tmuxline_powerline_separators = 0
 autocmd vimenter * Tmuxline iceberg full
 
 " ack package settings
-" let g:ackprg = 'ag --vimgrep --smart-case'
-" cnoreabbrev ag Ack
-" cnoreabbrev aG Ack
-" cnoreabbrev Ag Ack
-" cnoreabbrev AG Ack
+if executable('ag')
+    let g:ackprg = 'ag --vimgrep'
+endif
+cnoreabbrev ag Ack
+cnoreabbrev aG Ack
+cnoreabbrev Ag Ack
+cnoreabbrev AG Ack
 
 " ****** KEYBINDINGS ******
 
@@ -128,7 +130,9 @@ nnoremap <leader>r :source ~/.vim/vimrc<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>
 " this command will reopen the last-edited file
-nnoremap <Leader><Leader> :e#<CR>
+nnoremap <leader><leader> :e#<CR>
+
+nnoremap <leader>a :Ack!<Space>
 
 " move between windows
 noremap <leader>j <C-W>j
