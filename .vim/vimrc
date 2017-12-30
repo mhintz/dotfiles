@@ -116,7 +116,7 @@ let g:multi_cursor_next_key='<C-g>'
 
 " Tmuxline (styles get overriden incorrectly, need to refresh it on enter"
 let g:tmuxline_powerline_separators = 0
-if (exists($TMUX))
+if (exists("$TMUX"))
     autocmd vimenter * Tmuxline iceberg full
 endif
 
