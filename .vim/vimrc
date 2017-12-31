@@ -1,8 +1,4 @@
 " Things to do:
-" Set up NERDTree config options and shortcuts
-" consider alternative tree viewer plugins with better navigation
-" Read through spf13 vim config and apply the useful stuff from it
-" read :help filetype-overview to understand "filetype plugin indent on"
 " set up Ctrl-P to have more file listing command options, or possibly setup the "Command-T" plugin
 
 execute pathogen#infect()
