@@ -18,17 +18,21 @@ filetype plugin indent on
 " syntax highlighting
 syntax on
 
-" this is required for vim-one
+" this print formatting chars are required for vim-one
 set t_8b=[48;2;%lu;%lu;%lum
 set t_8f=[38;2;%lu;%lu;%lum
 " get those nice colors
 set termguicolors
 " italics
 let g:one_allow_italics = 1
-" set the color scheme, then select the type
-colorscheme one
 " sets the dark theme
 set background=dark
+" set the color scheme
+colorscheme one
+" colorscheme OceanicNext
+" colorscheme seoul256
+" colorscheme neuromancer
+" colorscheme vice
 " set vim-airline theme to also use the 'vim-one' styles
 let g:airline_theme='one'
 
