@@ -53,3 +53,15 @@
 [submodule ".vim/bundle/editorconfig"]
 	path = .vim/bundle/editorconfig
 	url = git@github.com:editorconfig/editorconfig-vim.git
+[submodule ".vim/bundle/neuromancer-colors"]
+	path = .vim/bundle/neuromancer-colors
+	url = git@github.com:Zabanaa/neuromancer.vim.git
+[submodule ".vim/bundle/seoul-256"]
+	path = .vim/bundle/seoul-256
+	url = git@github.com:junegunn/seoul256.vim.git
+[submodule ".vim/bundle/oceanic-next"]
+	path = .vim/bundle/oceanic-next
+	url = git@github.com:mhartington/oceanic-next.git
+[submodule ".vim/bundle/vim-vice"]
+	path = .vim/bundle/vim-vice
+	url = git@github.com:bcicen/vim-vice.git
