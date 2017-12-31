@@ -119,13 +119,14 @@ let g:multi_cursor_next_key='<C-g>'
 
 " vim-airline disable tmuxline integration (it doesn't render correctly)
 let g:airline#extensions#tmuxline#enabled = 0
+let g:airline#extensions#tabline#enabled = 1
 
 " Tmuxline (styles get overriden incorrectly, need to refresh it on enter"
 let g:tmuxline_powerline_separators = 0
 
 " ack package settings (for using ag instead)
 if executable('ag')
-    let g:ackprg = 'ag --vimgrep'
+    let g:ackprg = 'ag --vimgrep --hidden'
 endif
 cnoreabbrev ag Ack
 cnoreabbrev aG Ack
@@ -192,6 +193,9 @@ noremap <leader><C-w> :tabclose<CR>
 " Opposite of join (breaK?).
 " A space is replaced with a carriage return; otherwise a carriage return is inserted.
 nnoremap <expr> K getline('.')[col('.') - 1] == ' ' ? "r<CR>" : "i<CR><ESC>l"
+
+" duplicate line
+nnoremap <leader>d yyp
 
 " faster scrolling
 noremap <C-n> 6<C-e>6j
