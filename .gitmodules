@@ -50,3 +50,6 @@
 [submodule ".vim/bundle/vim-tmux-focus-events"]
 	path = .vim/bundle/vim-tmux-focus-events
 	url = git://github.com/tmux-plugins/vim-tmux-focus-events.git
+[submodule ".vim/bundle/editorconfig"]
+	path = .vim/bundle/editorconfig
+	url = git@github.com:editorconfig/editorconfig-vim.git
