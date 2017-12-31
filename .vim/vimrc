@@ -45,6 +45,7 @@ set autoread
 set incsearch
 " highlighted search
 set hlsearch
+set nohlsearch
 
 " expected backspace behavior (backspace can delete over indent, eol, and the
 " start of your editing)
@@ -73,7 +74,12 @@ set scrolloff=3
 set hidden
 
 " no line wrap
-set nowrap
+" set nowrap
+set wrap
+set breakindent
+set breakindentopt=sbr
+" Unicode curly arrow, space
+set showbreak=↪
 
 " indentation settings
 set autoindent
@@ -126,6 +132,21 @@ cnoreabbrev aG Ack
 cnoreabbrev Ag Ack
 cnoreabbrev AG Ack
 
+" autocmd to pulse the cursorline when focus is returned to vim
+" copied (like some other commands here) from
+" https://github.com/airblade/dotvim/blob/master/vimrc
+function! s:Pulse()
+    sleep 100m
+
+    setlocal cursorline
+    redraw
+    sleep 100m
+
+    setlocal nocursorline
+    redraw
+endfunction
+autocmd FocusGained * call s:Pulse()
+
 " ****** KEYBINDINGS ******
 
 " manually reload vim config
@@ -143,6 +164,14 @@ noremap <leader>k <C-W>k
 noremap <leader>l <C-W>l
 noremap <leader>h <C-W>h
 
+nnoremap <Tab> <C-w>w
+nnoremap <S-Tab> <C-w>W
+
+" Use | and _ to split windows (while preserving original behaviour of
+" [count]bar and [count]_).
+nnoremap <expr><silent> <Bar> v:count == 0 ? "<C-W>v<C-W><Right>" : ":<C-U>normal! 0".v:count."<Bar><CR>"
+nnoremap <expr><silent> -     v:count == 0 ? "<C-W>s<C-W><Down>"  : ":<C-U>normal! ".v:count."-<CR>"
+
 " clear search highlights if they add visual clutter
 noremap <leader>c :nohlsearch<CR>
 
@@ -153,17 +182,16 @@ noremap <leader>n :tabnew<CR>
 noremap <leader><Left> :tabp<CR>
 noremap <leader><Right> :tabn<CR>
 
-noremap <leader>1 :tabnext 1<CR>
-noremap <leader>2 :tabnext 2<CR>
-noremap <leader>3 :tabnext 3<CR>
-noremap <leader>4 :tabnext 4<CR>
-noremap <leader>5 :tabnext 5<CR>
-noremap <leader>6 :tabnext 6<CR>
-noremap <leader>7 :tabnext 7<CR>
-noremap <leader>8 :tabnext 8<CR>
-noremap <leader>9 :tabnext 9<CR>
+" map <leader># to switch to tab #
+for i in range(1, 9)
+    execute 'nnoremap <leader>'.i.' :tabnext '.i.'<CR>'
+endfor
 
 noremap <leader><C-w> :tabclose<CR>
+
+" Opposite of join (breaK?).
+" A space is replaced with a carriage return; otherwise a carriage return is inserted.
+nnoremap <expr> K getline('.')[col('.') - 1] == ' ' ? "r<CR>" : "i<CR><ESC>l"
 
 " faster scrolling
 noremap <C-n> 6<C-e>6j
@@ -188,9 +216,14 @@ cnoremap <C-e> <End>
 
 " delete into a specific buffer (buffer d)
 nnoremap dd "ddd
+" cut into specific buffer (x)
 vnoremap <leader>x "xx
+" paste from that specific buffer (x)
 nnoremap <leader>p "xgp
+" use this to paste from system pasteboard
+nnoremap <leader>v :set paste<CR>"*gP:set nopaste<CR>
 
+" delete to end of line
 inoremap <C-k> <C-o>d$
 
 " move lines of text around vertically
