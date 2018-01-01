@@ -30,8 +30,8 @@ let g:one_allow_italics = 1
 " sets the dark theme
 set background=dark
 " set the color scheme
-" colorscheme one
-colorscheme OceanicNext
+colorscheme one
+" colorscheme OceanicNext
 " colorscheme seoul256
 " colorscheme neuromancer
 " colorscheme vice
@@ -98,9 +98,18 @@ let mapleader = " "
 
 " ctrlp settings
 let g:ctrlp_show_hidden = 1
-let g:ctrlp_working_path_mode = 'a'
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_user_command = {
+    \ 'types': {
+        \ 1: ['.git', 'cd %s && git ls-files -co --exclude-standard'],
+    \ },
+    \ 'fallback': 'find %s -type f'
+    \ }
 let g:ctrlp_extensions = ['dir']
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.(git|hg|svn))$',
+  \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg|min\.js)$',
+\}
 
 " NERDTree Settings
 nnoremap <leader>o :NERDTreeToggle<CR>
@@ -151,7 +160,7 @@ autocmd FocusGained * call s:Pulse()
 " manually reload vim config
 nnoremap <leader>r :source ~/.vim/vimrc<CR>
 " open help in a side window
-nnoremap <leader><C-H> :vert bo help<CR>
+nnoremap <leader><C-H> :vert bo help 
 
 " ****** BUFFERS, WINDOWS, AND TABS ******
 nnoremap <leader>w :w<CR>
@@ -172,6 +181,11 @@ nnoremap <S-Tab> <C-w>W
 " [count]bar and [count]_).
 nnoremap <expr><silent> <Bar> v:count == 0 ? "<C-W>v<C-W><Right>" : ":<C-U>normal! 0".v:count."<Bar><CR>"
 nnoremap <expr><silent> -     v:count == 0 ? "<C-W>s<C-W><Down>"  : ":<C-U>normal! ".v:count."-<CR>"
+
+nnoremap <leader>pp :CtrlPBuffer<CR>
+nnoremap <leader>pm :CtrlPMixed<CR>
+nnoremap <leader>pu :CtrlPMRU<CR>
+nnoremap <leader>pd :CtrlPCurWD<CR>
 
 " edit the last-edited file
 nnoremap <leader><leader> :e#<CR>
@@ -279,5 +293,5 @@ nmap <expr> <leader>dw col('.')==strlen(getline('.'))?"dbxa":"dbxi"
 
 " these lines provide some simple context scrolling in insert mode (I know
 " it's bad to add weird movement commands in insert mode but I can't help it)
-inoremap <M-m> <ESC>6<C-y>6ki
-inoremap <M-n> <ESC>6<C-e>6ji
+inoremap <M-m> <C-o>6<C-y>
+inoremap <M-n> <C-o>6<C-e>
