@@ -1,5 +1,7 @@
 " Things to do:
 " set up Ctrl-P to have more file listing command options, or possibly setup the "Command-T" plugin
+" set up YouCompleteMe
+" set up fzf
 
 execute pathogen#infect()
 " to generate documentation for all pathogen-installed plugins, run :Helptags
@@ -28,8 +30,8 @@ let g:one_allow_italics = 1
 " sets the dark theme
 set background=dark
 " set the color scheme
-colorscheme one
-" colorscheme OceanicNext
+" colorscheme one
+colorscheme OceanicNext
 " colorscheme seoul256
 " colorscheme neuromancer
 " colorscheme vice
@@ -89,9 +91,6 @@ set shiftwidth=4
 set expandtab
 set softtabstop=4
 
-" remove trailing whitespace on save
-autocmd BufWritePre * :%s/\s\+$//e
-
 " ****** SET LEADER KEY ******
 let mapleader = " "
 
@@ -107,12 +106,11 @@ let g:ctrlp_extensions = ['dir']
 nnoremap <leader>o :NERDTreeToggle<CR>
 let g:NERDTreeWinSize=20
 let g:NERDTreeShowHidden=1
-" open a NERDTree automatically (and move to the main window) when vim is
-" opened or a new tab is made
-autocmd vimenter * NERDTree | wincmd l
-autocmd tabnew * NERDTree | wincmd l
+" open a NERDTree automatically (and move to the main window) when vim is opened or a new tab is made
+" autocmd vimenter * NERDTree | wincmd l
+" autocmd tabnew * NERDTree | wincmd l
 " close the nerd tree window if it's the last one open
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " multi-cursor settings
 let g:multi_cursor_next_key='<C-g>'
@@ -152,10 +150,12 @@ autocmd FocusGained * call s:Pulse()
 
 " manually reload vim config
 nnoremap <leader>r :source ~/.vim/vimrc<CR>
+" open help in a side window
+nnoremap <leader><C-H> :vert bo help<CR>
+
+" ****** BUFFERS, WINDOWS, AND TABS ******
 nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>
-" this command will reopen the last-edited file
-nnoremap <leader><leader> :e#<CR>
 
 nnoremap <leader>a :Ack!<Space>
 
@@ -173,29 +173,46 @@ nnoremap <S-Tab> <C-w>W
 nnoremap <expr><silent> <Bar> v:count == 0 ? "<C-W>v<C-W><Right>" : ":<C-U>normal! 0".v:count."<Bar><CR>"
 nnoremap <expr><silent> -     v:count == 0 ? "<C-W>s<C-W><Down>"  : ":<C-U>normal! ".v:count."-<CR>"
 
-" clear search highlights if they add visual clutter
-noremap <leader>c :nohlsearch<CR>
+" edit the last-edited file
+nnoremap <leader><leader> :e#<CR>
 
-" create tabs
-noremap <leader>n :tabnew<CR>
+" create buffers / tabs
+nnoremap <leader>bn :enew<CR>
+nnoremap <leader>bd :bdelete<CR>
+nnoremap <leader>bb :b#<CR>
 
-" move between tabs
-noremap <leader><Left> :tabp<CR>
-noremap <leader><Right> :tabn<CR>
+nnoremap <leader>tn :tabnew<CR>
+nnoremap <leader>td :tabclose<CR>
+nnoremap <leader>tb :tabp<CR>
 
-" map <leader># to switch to tab #
+" move between buffers / tabs
+noremap <leader>n :bnext<CR>
+noremap <leader>m :bprev<CR>
+noremap <leader><Left> :bnext<CR>
+noremap <leader><Right> :bprev<CR>
+noremap <leader><C-N> :tabn<CR>
+noremap <leader><C-M> :tabp<CR>
+
+" map <leader># to switch to buffer #
 for i in range(1, 9)
-    execute 'nnoremap <leader>'.i.' :tabnext '.i.'<CR>'
+    execute 'nnoremap <leader>'.i.' :buffer '.i.'<CR>'
 endfor
 
-noremap <leader><C-w> :tabclose<CR>
+" ****** EDITING COMMANDS ******
+
+" clear search highlights if they add visual clutter
+noremap <leader>cc :nohlsearch<CR>
+
+" remove trailing whitespace
+" autocmd BufWritePre * :%s/\s\+$//e
+nnoremap <leader>cw :%s/\s\+$//e<CR>
 
 " Opposite of join (breaK?).
 " A space is replaced with a carriage return; otherwise a carriage return is inserted.
 nnoremap <expr> K getline('.')[col('.') - 1] == ' ' ? "r<CR>" : "i<CR><ESC>l"
 
 " duplicate line
-nnoremap <leader>d yyp
+nnoremap <leader>dd yyp
 
 " faster scrolling
 noremap <C-n> 6<C-e>6j
@@ -218,11 +235,11 @@ inoremap <C-e> <C-o>$
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 
-" delete into a specific buffer (buffer d)
+" delete into a specific register (register d)
 nnoremap dd "ddd
-" cut into specific buffer (x)
+" cut into specific register (x)
 vnoremap <leader>x "xx
-" paste from that specific buffer (x)
+" paste from that specific register (x)
 nnoremap <leader>p "xgp
 " use this to paste from system pasteboard
 nnoremap <leader>v :set paste<CR>"*gP:set nopaste<CR>
@@ -242,6 +259,9 @@ inoremap <M-k> <C-o>k
 " inoremap <M-b> <C-o>b
 inoremap <M-e> <ESC>eli
 inoremap <M-w> <C-o>w
+
+" Have terminal set up to send "<leader>dw" on <Ctrl+Del>
+nmap <expr> <leader>dw col('.')==strlen(getline('.'))?"dbxa":"dbxi"
 
 " while I learn, some key bindings to make me feel like home :)
 " (there's more to these lines than meets the eye)
