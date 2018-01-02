@@ -202,8 +202,8 @@ nnoremap <leader>tb :tabp<CR>
 " move between buffers / tabs
 noremap <leader>n :bnext<CR>
 noremap <leader>m :bprev<CR>
-noremap <leader><Left> :bnext<CR>
-noremap <leader><Right> :bprev<CR>
+noremap <leader><Left> :bprev<CR>
+noremap <leader><Right> :bnext<CR>
 noremap <leader><C-N> :tabn<CR>
 noremap <leader><C-M> :tabp<CR>
 
@@ -227,6 +227,9 @@ nnoremap <expr> K getline('.')[col('.') - 1] == ' ' ? "r<CR>" : "i<CR><ESC>l"
 
 " duplicate line
 nnoremap <leader>dd yyp
+
+" Have terminal set up to send "<leader>dw" on <Ctrl+Del>
+nmap <expr> <leader>dw col('.')==strlen(getline('.'))?"dbxa":"dbxi"
 
 " faster scrolling
 noremap <C-n> 6<C-e>6j
@@ -273,9 +276,6 @@ inoremap <M-k> <C-o>k
 " inoremap <M-b> <C-o>b
 inoremap <M-e> <ESC>eli
 inoremap <M-w> <C-o>w
-
-" Have terminal set up to send "<leader>dw" on <Ctrl+Del>
-nmap <expr> <leader>dw col('.')==strlen(getline('.'))?"dbxa":"dbxi"
 
 " while I learn, some key bindings to make me feel like home :)
 " (there's more to these lines than meets the eye)
