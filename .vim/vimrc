@@ -207,9 +207,9 @@ noremap <leader><Right> :bprev<CR>
 noremap <leader><C-N> :tabn<CR>
 noremap <leader><C-M> :tabp<CR>
 
-" map <leader># to switch to buffer #
+" map <leader># to switch to tab #
 for i in range(1, 9)
-    execute 'nnoremap <leader>'.i.' :buffer '.i.'<CR>'
+    execute 'nnoremap <leader>'.i.' :tabnext '.i.'<CR>'
 endfor
 
 " ****** EDITING COMMANDS ******
