@@ -65,3 +65,6 @@
 [submodule ".vim/bundle/vim-vice"]
 	path = .vim/bundle/vim-vice
 	url = git@github.com:bcicen/vim-vice.git
+[submodule ".vim/bundle/fzf"]
+	path = .vim/bundle/fzf
+	url = git@github.com:junegunn/fzf.vim.git
