@@ -96,7 +96,12 @@ let mapleader = " "
 
 " ****** PLUGIN SETTINGS ******
 
+" add fzf to the runtime path
+set rtp+=/usr/local/opt/fzf
+
 " ctrlp settings
+" for the moment, disable ctrlp altogether and try using fzf instead
+let g:loaded_ctrlp = 1
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_user_command = {
@@ -110,6 +115,10 @@ let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](\.(git|hg|svn))$',
   \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg|min\.js)$',
 \}
+let g:ctrlp_mruf_save_on_update = 1
+
+" delimitMate Settings
+let g:delimitMate_expand_cr = 1
 
 " NERDTree Settings
 nnoremap <leader>o :NERDTreeToggle<CR>
@@ -135,10 +144,10 @@ let g:tmuxline_powerline_separators = 0
 if executable('ag')
     let g:ackprg = 'ag --vimgrep --hidden'
 endif
-cnoreabbrev ag Ack
-cnoreabbrev aG Ack
-cnoreabbrev Ag Ack
-cnoreabbrev AG Ack
+" cnoreabbrev ag Ack
+" cnoreabbrev aG Ack
+" cnoreabbrev Ag Ack
+" cnoreabbrev AG Ack
 
 " autocmd to pulse the cursorline when focus is returned to vim
 " copied (like some other commands here) from
@@ -160,19 +169,19 @@ autocmd FocusGained * call s:Pulse()
 " manually reload vim config
 nnoremap <leader>r :source ~/.vim/vimrc<CR>
 " open help in a side window
-nnoremap <leader><C-H> :vert bo help 
+nnoremap <leader><C-H> :vert bo help<Space>
 
 " ****** BUFFERS, WINDOWS, AND TABS ******
 nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>
 
-nnoremap <leader>a :Ack!<Space>
+nnoremap <leader>a :Ag<Space>
 
 " move between windows
-noremap <leader>j <C-W>j
-noremap <leader>k <C-W>k
-noremap <leader>l <C-W>l
-noremap <leader>h <C-W>h
+" noremap <leader>j <C-W>j
+" noremap <leader>k <C-W>k
+" noremap <leader>l <C-W>l
+" noremap <leader>h <C-W>h
 
 nnoremap <Tab> <C-w>w
 nnoremap <S-Tab> <C-w>W
@@ -182,10 +191,13 @@ nnoremap <S-Tab> <C-w>W
 nnoremap <expr><silent> <Bar> v:count == 0 ? "<C-W>v<C-W><Right>" : ":<C-U>normal! 0".v:count."<Bar><CR>"
 nnoremap <expr><silent> -     v:count == 0 ? "<C-W>s<C-W><Down>"  : ":<C-U>normal! ".v:count."-<CR>"
 
-nnoremap <leader>pp :CtrlPBuffer<CR>
-nnoremap <leader>pm :CtrlPMixed<CR>
-nnoremap <leader>pu :CtrlPMRU<CR>
-nnoremap <leader>pd :CtrlPCurWD<CR>
+" nnoremap <leader>pp :CtrlPBuffer<CR>
+" nnoremap <leader>pm :CtrlPMixed<CR>
+" nnoremap <leader>pu :CtrlPMRU<CR>
+" nnoremap <leader>pd :CtrlPCurWD<CR>
+
+nnoremap <C-p> :Files<CR>
+nnoremap <leader>p :Buffers<CR>
 
 " edit the last-edited file
 nnoremap <leader><leader> :e#<CR>
@@ -193,6 +205,7 @@ nnoremap <leader><leader> :e#<CR>
 " create buffers / tabs
 nnoremap <leader>bn :enew<CR>
 nnoremap <leader>bd :bdelete<CR>
+nnoremap <leader>c :bdelete<CR>
 nnoremap <leader>bb :b#<CR>
 
 nnoremap <leader>tn :tabnew<CR>
@@ -215,21 +228,24 @@ endfor
 " ****** EDITING COMMANDS ******
 
 " clear search highlights if they add visual clutter
-noremap <leader>cc :nohlsearch<CR>
+noremap <leader>dh :nohlsearch<CR>
 
 " remove trailing whitespace
 " autocmd BufWritePre * :%s/\s\+$//e
-nnoremap <leader>cw :%s/\s\+$//e<CR>
+nnoremap <leader>ds :%s/\s\+$//e<CR>
 
 " Opposite of join (breaK?).
 " A space is replaced with a carriage return; otherwise a carriage return is inserted.
 nnoremap <expr> K getline('.')[col('.') - 1] == ' ' ? "r<CR>" : "i<CR><ESC>l"
 
-" duplicate line
-nnoremap <leader>dd yyp
-
 " Have terminal set up to send "<leader>dw" on <Ctrl+Del>
 nmap <expr> <leader>dw col('.')==strlen(getline('.'))?"dbxa":"dbxi"
+
+" duplicate line
+nnoremap <leader>ld yyp
+
+" move line downward by inserting a line above it
+nnoremap <leader>ll mzO<ESC>`z
 
 " faster scrolling
 noremap <C-n> 6<C-e>6j
@@ -255,9 +271,9 @@ cnoremap <C-e> <End>
 " delete into a specific register (register d)
 nnoremap dd "ddd
 " cut into specific register (x)
-vnoremap <leader>x "xx
+" vnoremap <leader>x "xx
 " paste from that specific register (x)
-nnoremap <leader>p "xgp
+" nnoremap <leader>p "xgp
 " use this to paste from system pasteboard
 nnoremap <leader>v :set paste<CR>"*gP:set nopaste<CR>
 

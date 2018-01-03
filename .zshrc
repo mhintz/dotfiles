@@ -101,3 +101,5 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 THIS_DIR=$(dirname $0)
 
 source $THIS_DIR/aliases.sh
+
+export FZF_DEFAULT_COMMAND='fd -H -E .git'
