@@ -19,6 +19,8 @@ alias refresh='source ~/.zshrc'
 
 alias lsl='ls -la'
 
+alias howdeep='echo $SHLVL'
+
 # - Cargo
 alias cgoc='cargo clean'
 alias cgob='cargo build'

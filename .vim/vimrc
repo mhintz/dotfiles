@@ -39,6 +39,9 @@ colorscheme one
 let g:airline_theme='one'
 
 " ****** SETTINGS ******
+set synmaxcol=256
+syntax sync minlines=128
+set lazyredraw
 
 " reloads when a file is changed in the background
 set autoread
@@ -122,7 +125,7 @@ let g:delimitMate_expand_cr = 1
 
 " NERDTree Settings
 nnoremap <leader>o :NERDTreeToggle<CR>
-let g:NERDTreeWinSize=20
+let g:NERDTreeWinSize=30
 let g:NERDTreeShowHidden=1
 " open a NERDTree automatically (and move to the main window) when vim is opened or a new tab is made
 " autocmd vimenter * NERDTree | wincmd l
@@ -132,6 +135,7 @@ let g:NERDTreeShowHidden=1
 
 " multi-cursor settings
 let g:multi_cursor_next_key='<C-g>'
+let g:multi_cursor_exit_from_visual_mode=0
 
 " vim-airline disable tmuxline integration (it doesn't render correctly)
 let g:airline#extensions#tmuxline#enabled = 0
@@ -163,6 +167,10 @@ function! s:Pulse()
     redraw
 endfunction
 autocmd FocusGained * call s:Pulse()
+
+function! g:PrintFullFilePath()
+    echo expand('%:p')
+endfunction
 
 " ****** KEYBINDINGS ******
 
@@ -198,6 +206,7 @@ nnoremap <expr><silent> -     v:count == 0 ? "<C-W>s<C-W><Down>"  : ":<C-U>norma
 
 nnoremap <C-p> :Files<CR>
 nnoremap <leader>p :Buffers<CR>
+nnoremap <leader>f :BLines<CR>
 
 " edit the last-edited file
 nnoremap <leader><leader> :e#<CR>
@@ -238,14 +247,17 @@ nnoremap <leader>ds :%s/\s\+$//e<CR>
 " A space is replaced with a carriage return; otherwise a carriage return is inserted.
 nnoremap <expr> K getline('.')[col('.') - 1] == ' ' ? "r<CR>" : "i<CR><ESC>l"
 
-" Have terminal set up to send "<leader>dw" on <Ctrl+Del>
-nmap <expr> <leader>dw col('.')==strlen(getline('.'))?"dbxa":"dbxi"
+" Need to have terminal set up to send "<leader>dw" on <Ctrl+Del>
+nnoremap <expr> <leader>dw col('.')==strlen(getline('.'))?"dbxa":"dbxi"
 
 " duplicate line
 nnoremap <leader>ld yyp
 
 " move line downward by inserting a line above it
 nnoremap <leader>ll mzO<ESC>`z
+
+" comment out line
+" nnoremap  gcc
 
 " faster scrolling
 noremap <C-n> 6<C-e>6j
