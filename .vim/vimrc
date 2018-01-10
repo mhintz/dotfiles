@@ -39,9 +39,9 @@ colorscheme one
 let g:airline_theme='one'
 
 " ****** SETTINGS ******
-set synmaxcol=256
-syntax sync minlines=128
-set lazyredraw
+" set synmaxcol=256
+" syntax sync minlines=128
+" set lazyredraw
 
 " reloads when a file is changed in the background
 set autoread
@@ -181,7 +181,9 @@ nnoremap <leader><C-H> :vert bo help<Space>
 
 " ****** BUFFERS, WINDOWS, AND TABS ******
 nnoremap <leader>w :w<CR>
-nnoremap <leader>q :q<CR>
+nnoremap <leader>qq :bdelete<CR>
+" (Ctrl-w q quits completely)
+nnoremap <leader>qw :q<CR>
 
 nnoremap <leader>a :Ag<Space>
 
@@ -214,8 +216,8 @@ nnoremap <leader><leader> :e#<CR>
 " create buffers / tabs
 nnoremap <leader>bn :enew<CR>
 nnoremap <leader>bd :bdelete<CR>
-nnoremap <leader>c :bdelete<CR>
-nnoremap <leader>bb :b#<CR>
+" nnoremap <leader>c :bdelete<CR>
+nnoremap <leader>bb <C-^>
 
 nnoremap <leader>tn :tabnew<CR>
 nnoremap <leader>td :tabclose<CR>
@@ -230,8 +232,21 @@ noremap <leader><C-N> :tabn<CR>
 noremap <leader><C-M> :tabp<CR>
 
 " map <leader># to switch to tab #
-for i in range(1, 9)
-    execute 'nnoremap <leader>'.i.' :tabnext '.i.'<CR>'
+" for i in range(1, 9)
+"     execute 'nnoremap <leader>'.i.' :tabnext '.i.'<CR>'
+" endfor
+
+" map <leader># to switch to buffer # (among listed buffers)
+function! g:OpenBufByIdx(index)
+    let l:bufs = map(filter(copy(getbufinfo()), 'v:val.listed'), 'v:val.bufnr')
+    if a:index < len(bufs)
+        execute ":b ".get(bufs, a:index)
+    endif
+endfunction
+
+" <leader># opens buffer number # from the buffer list
+for i in range (1, 9)
+    execute 'nnoremap <leader>'.i.' :call OpenBufByIdx('.(i - 1).')<CR>'
 endfor
 
 " ****** EDITING COMMANDS ******
