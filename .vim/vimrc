@@ -182,7 +182,7 @@ nnoremap <leader>r :source ~/.vim/vimrc<CR>
 nnoremap <leader><C-H> :vert bo help<Space>
 
 " ****** BUFFERS, WINDOWS, AND TABS ******
-nnoremap <leader>w :w<CR>
+nnoremap <leader>wq :wq<CR>
 nnoremap s :w<CR>
 nnoremap <leader>qq :bdelete<CR>
 " (Ctrl-w q quits completely)
