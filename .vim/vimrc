@@ -43,6 +43,8 @@ let g:airline_theme='one'
 " syntax sync minlines=128
 " set lazyredraw
 
+set mouse=a
+
 " reloads when a file is changed in the background
 set autoread
 
