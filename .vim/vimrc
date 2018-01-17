@@ -204,11 +204,6 @@ nnoremap <S-Tab> <C-w>W
 nnoremap <expr><silent> <Bar> v:count == 0 ? "<C-W>v<C-W><Right>" : ":<C-U>normal! 0".v:count."<Bar><CR>"
 nnoremap <expr><silent> -     v:count == 0 ? "<C-W>s<C-W><Down>"  : ":<C-U>normal! ".v:count."-<CR>"
 
-" nnoremap <leader>pp :CtrlPBuffer<CR>
-" nnoremap <leader>pm :CtrlPMixed<CR>
-" nnoremap <leader>pu :CtrlPMRU<CR>
-" nnoremap <leader>pd :CtrlPCurWD<CR>
-
 nnoremap <C-p> :Files<CR>
 nnoremap <leader>p :Buffers<CR>
 nnoremap <leader>f :BLines<CR>
@@ -219,7 +214,6 @@ nnoremap <leader><leader> :e#<CR>
 " create buffers / tabs
 nnoremap <leader>bn :enew<CR>
 nnoremap <leader>bd :bdelete<CR>
-" nnoremap <leader>c :bdelete<CR>
 nnoremap <leader>bb <C-^>
 
 nnoremap <leader>tn :tabnew<CR>
@@ -258,7 +252,6 @@ endfor
 noremap <leader>dh :nohlsearch<CR>
 
 " remove trailing whitespace
-" autocmd BufWritePre * :%s/\s\+$//e
 nnoremap <leader>ds :%s/\s\+$//e<CR>
 
 " Opposite of join (breaK?).
@@ -318,6 +311,8 @@ nnoremap dd "ddd
 " nnoremap <leader>p "xgp
 " use this to paste from system pasteboard
 nnoremap <leader>v :set paste<CR>"*gP:set nopaste<CR>
+" normal as well as visual mode
+noremap <leader>x "*y
 
 " delete to end of line
 inoremap <C-k> <C-o>d$
