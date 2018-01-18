@@ -17,7 +17,10 @@ alias gemup='gem update'
 # - zsh
 alias refresh='source ~/.zshrc'
 
-alias lsl='ls -la'
+alias l='ls -lah'
+alias lsl='ls -lah'
+
+alias v='vim '
 
 alias howdeep='echo $SHLVL'
 

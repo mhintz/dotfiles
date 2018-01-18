@@ -187,6 +187,7 @@ nnoremap s :w<CR>
 nnoremap <leader>qq :bdelete<CR>
 " (Ctrl-w q quits completely)
 nnoremap <leader>qw :q<CR>
+nnoremap <leader>qa :qa<CR>
 
 nnoremap <leader>a :Ag<Space>
 
@@ -259,7 +260,7 @@ nnoremap <leader>ds :%s/\s\+$//e<CR>
 nnoremap <expr> K getline('.')[col('.') - 1] == ' ' ? "r<CR>" : "i<CR><ESC>l"
 
 " Need to have terminal set up to send "<leader>dw" on <Ctrl+Del>
-nnoremap <expr> <leader>dw col('.')==strlen(getline('.'))?"dbxa":"dbxi"
+" nnoremap <expr> <leader>dw col('.')==strlen(getline('.'))?"dbxa":"dbxi"
 
 " duplicate line
 nnoremap <leader>ld yyp
