@@ -30,6 +30,7 @@ alias cgob='cargo build'
 alias cgor='cargo run'
 
 # - Git
+# alias gb='GIT_PAGER=cat git branch'
 alias gs='git status'
 alias gits='git status'
 alias gitd='git diff'
