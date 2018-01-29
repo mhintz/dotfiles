@@ -71,3 +71,6 @@
 [submodule ".vim/bundle/YouCompleteMe"]
 	path = .vim/bundle/YouCompleteMe
 	url = git@github.com:Valloric/YouCompleteMe.git
+[submodule ".vim/bundle/js-indent"]
+	path = .vim/bundle/js-indent
+	url = git@github.com:jason0x43/vim-js-indent.git
