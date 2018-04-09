@@ -74,3 +74,6 @@
 [submodule ".vim/bundle/js-indent"]
 	path = .vim/bundle/js-indent
 	url = git@github.com:jason0x43/vim-js-indent.git
+[submodule ".vim/bundle/vim-tmux-navigator"]
+	path = .vim/bundle/vim-tmux-navigator
+	url = git@github.com:christoomey/vim-tmux-navigator.git
