@@ -17,8 +17,8 @@ alias gemup='gem update'
 # - zsh
 alias refresh='source ~/.zshrc'
 
-alias l='ls -lah'
-alias lsl='ls -lah'
+alias l='ls -a -1 -X --file-type --color --human-readable'
+alias lsl='ls -a -l --human-readable'
 
 alias v='vim '
 
@@ -44,4 +44,5 @@ alias gitfr='git fetch; git rebase'
 alias gitpl='git pull'
 alias gitpr='git pull --rebase'
 alias gitpo='git push origin'
+alias gsl='git stash list'
 
