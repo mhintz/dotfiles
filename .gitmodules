@@ -8,9 +8,6 @@
 [submodule ".vim/bundle/ctrlp"]
 	path = .vim/bundle/ctrlp
 	url = git@github.com:ctrlpvim/ctrlp.vim.git
-[submodule ".vim/bundle/ack"]
-	path = .vim/bundle/ack
-	url = git@github.com:mileszs/ack.vim.git
 [submodule ".vim/bundle/tmuxline"]
 	path = .vim/bundle/tmuxline
 	url = git@github.com:edkolev/tmuxline.vim.git
