@@ -108,9 +108,8 @@ let mapleader = " "
 
 " vim searches for tags
 set tags=./tags;~/code
-" easytags options
-let g:easytags_cmd = 'rg --files | ctags -R'
-let g:easytags_async = 1
+" autotags options
+let g:autotagCtagsCmd = 'rg --files | ctags -R'
 
 " add fzf to the runtime path
 set rtp+=/usr/local/opt/fzf
