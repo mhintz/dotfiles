@@ -99,16 +99,21 @@ set shiftwidth=4
 set expandtab
 set softtabstop=4
 
+set completeopt=menuone
+
 " ****** SET LEADER KEY ******
 let mapleader = " "
 
 " ****** PLUGIN SETTINGS ******
 
+" vim searches for tags
+set tags=./tags;~/code
+" easytags options
+let g:easytags_cmd = 'rg --files | ctags -R'
+let g:easytags_async = 1
+
 " add fzf to the runtime path
 set rtp+=/usr/local/opt/fzf
-
-" disable ctrlp entirely
-let g:loaded_ctrlp = 1
 
 " delimitMate Settings
 let g:delimitMate_expand_cr = 1

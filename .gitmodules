@@ -5,9 +5,6 @@
 [submodule ".vim/bundle/wordmotion"]
 	path = .vim/bundle/wordmotion
 	url = git@github.com:chaoren/vim-wordmotion.git
-[submodule ".vim/bundle/ctrlp"]
-	path = .vim/bundle/ctrlp
-	url = git@github.com:ctrlpvim/ctrlp.vim.git
 [submodule ".vim/bundle/tmuxline"]
 	path = .vim/bundle/tmuxline
 	url = git@github.com:edkolev/tmuxline.vim.git
@@ -74,3 +71,6 @@
 [submodule ".vim/bundle/vim-tmux-navigator"]
 	path = .vim/bundle/vim-tmux-navigator
 	url = git@github.com:christoomey/vim-tmux-navigator.git
+[submodule ".vim/bundle/vim-easytags"]
+	path = .vim/bundle/vim-easytags
+	url = git@github.com:xolox/vim-easytags.git
