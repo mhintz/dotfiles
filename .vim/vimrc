@@ -107,8 +107,9 @@ let mapleader = " "
 " ****** PLUGIN SETTINGS ******
 
 " vim searches for tags
-set tags=./tags;~/code
+set tags=.tags;~/code
 " autotags options
+let g:autotagTagsFile='.tags'
 let g:autotagCtagsCmd = 'rg --files | ctags -R'
 
 " add fzf to the runtime path

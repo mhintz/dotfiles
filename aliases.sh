@@ -24,6 +24,25 @@ alias v='vim '
 
 alias howdeep='echo $SHLVL'
 
+# /shrug might not work? shells are weird
+isgitdir() {
+    command -v git && git rev-parse --show-toplevel 2>/dev/null
+}
+
+# - Ctags
+makectags() {
+    CTAGS_CMD='ctags -f .tags -L-'
+    if [[ $(command -v git) && $(git rev-parse --show-toplevel 2>/dev/null) ]]; then
+        git ls-files | eval $CTAGS_CMD
+    elif [[ $(command -v fd) ]]; then
+        fd -H -E '.git' | eval $CTAGS_CMD 
+    elif [[ $(command -v rg) ]]; then
+        rg --hidden --files | eval $CTAGS_CMD
+    else
+        find . | eval $CTAGS_CMD
+    fi
+}
+
 # - Cargo
 alias cgoc='cargo clean'
 alias cgob='cargo build'
