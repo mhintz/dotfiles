@@ -32,10 +32,10 @@ isgitdir() {
 # - Ctags
 makectags() {
     CTAGS_CMD='ctags -f .tags -L-'
-    if [[ $(command -v git) && $(git rev-parse --show-toplevel 2>/dev/null) ]]; then
-        git ls-files | eval $CTAGS_CMD
-    elif [[ $(command -v fd) ]]; then
+    if [[ $(command -v fd) ]]; then
         fd -H -E '.git' | eval $CTAGS_CMD 
+    elif [[ $(command -v git) && $(git rev-parse --show-toplevel 2>/dev/null) ]]; then
+        git ls-files | eval $CTAGS_CMD
     elif [[ $(command -v rg) ]]; then
         rg --hidden --files | eval $CTAGS_CMD
     else

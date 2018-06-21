@@ -94,10 +94,10 @@ set showbreak=↪
 " indentation settings
 set autoindent
 set smartindent
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
-set softtabstop=4
+set softtabstop=2
 
 set completeopt=menuone
 
@@ -147,21 +147,6 @@ command! -bang -nargs=* Rg
   \   <bang>0 ? fzf#vim#with_preview('up:60%')
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
-
-" autocmd to pulse the cursorline when focus is returned to vim
-" copied (like some other commands here) from
-" https://github.com/airblade/dotvim/blob/master/vimrc
-function! s:Pulse()
-    sleep 100m
-
-    setlocal cursorline
-    redraw
-    sleep 100m
-
-    setlocal nocursorline
-    redraw
-endfunction
-autocmd FocusGained * call s:Pulse()
 
 function! g:PrintFullFilePath()
     echo expand('%:p')
