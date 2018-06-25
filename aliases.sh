@@ -43,6 +43,8 @@ makectags() {
     fi
 }
 
+space_seq() { seq $1 $2 | tr '\n' ' ' | head -c -1 }
+
 # - Cargo
 alias cgoc='cargo clean'
 alias cgob='cargo build'
