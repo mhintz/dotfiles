@@ -1,8 +1,3 @@
-" Things to do:
-" set up Ctrl-P to have more file listing command options, or possibly setup the "Command-T" plugin
-" set up YouCompleteMe
-" set up fzf
-
 execute pathogen#infect()
 " to generate documentation for all pathogen-installed plugins, run :Helptags
 
@@ -24,23 +19,30 @@ set re=1
 set ttyfast
 set lazyredraw
 
-" this print formatting chars are required for vim-one
+" get those nice colors
+" set termguicolors
+
+" vim-one color scheme
+" these print formatting chars are required for vim-one
 set t_8b=[48;2;%lu;%lu;%lum
 set t_8f=[38;2;%lu;%lu;%lum
-" get those nice colors
-set termguicolors
-" italics
-let g:one_allow_italics = 1
-" sets the dark theme
+" let g:one_allow_italics = 1
+" set background=dark
+" colorscheme one
+
+" seoul256 theme
+let g:seoul256_background = 239
 set background=dark
-" set the color scheme
-colorscheme one
+colorscheme seoul256
+
+" other themes
 " colorscheme OceanicNext
-" colorscheme seoul256
 " colorscheme neuromancer
 " colorscheme vice
-" set vim-airline theme to also use the 'vim-one' styles
+
+" set vim-airline theme to match
 let g:airline_theme='one'
+" let g:airline_theme='zenburn'
 
 " ****** SETTINGS ******
 " set synmaxcol=256
