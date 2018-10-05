@@ -242,6 +242,10 @@ endfor
 " turn off Ctrl-Z since it's annoying
 noremap <C-z> <Nop>
 
+" macro stuff
+noremap q <Nop>
+nnoremap Q q
+
 " clear search highlights if they add visual clutter
 noremap <leader>dh :nohlsearch<CR>
 
