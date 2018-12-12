@@ -154,6 +154,12 @@ function! g:PrintFullFilePath()
     echo expand('%:p')
 endfunction
 
+" ****** Special Case Syntax ******
+augroup thing_orgmode_syntax
+  au!
+  autocmd BufNewFile,BufRead *.org set syntax=clojure
+augroup END
+
 " ****** KEYBINDINGS ******
 
 " remap so getting to the command line is one key away

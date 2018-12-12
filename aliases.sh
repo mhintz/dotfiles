@@ -5,6 +5,7 @@ alias simpleserver='python2.7 -m SimpleHTTPServer 8000'
 alias sublo='subl .'
 alias atomo='atom .'
 alias towero='gittower .'
+alias venv='source ./venv/bin/activate'
 
 # - Cool upgrade commands
 alias brewup='brew update; brew upgrade;'

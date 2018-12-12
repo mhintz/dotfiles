@@ -10,6 +10,9 @@ export PATH="/usr/local/bin:$PATH"
 # misc
 export PATH="~/bin:$PATH"
 
+# manpath
+export MANPATH="/usr/local/man:$MANPATH"
+
 # homebrew library path
 export LIBRARY_PATH="$LIBRARY_PATH:/usr/local/lib"
 
