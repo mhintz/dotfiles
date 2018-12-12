@@ -4,9 +4,7 @@ export EDITOR=vim
 export VISUAL=vim
 
 # my scripts
-export PATH="~/code/scripts:$PATH"
-# misc
-export PATH="~/bin:$PATH"
+export PATH="$HOME/code/scripts:$PATH"
 # homebrew
 export PATH="/usr/local/bin:$PATH"
 
