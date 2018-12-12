@@ -11,9 +11,13 @@ alias venv='source ./venv/bin/activate'
 alias brewup='brew update; brew upgrade;'
 alias npmup='npm install -g npm@latest; npm update -g;'
 alias yarnup='yarn global upgrade;'
-alias pipup="pip install --upgrade pip; pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip install -U;"
-alias pip2up="pip2 install --upgrade pip; pip2 freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs pip install -U;"
+alias pipup="pip3 install --upgrade pip; pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs pip3 install -U;"
+alias pip2up="pip2 install --upgrade pip; pip2 freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs pip2 install -U;"
 alias gemup='gem update'
+
+# - Python alias
+alias python='python3'
+alias pip='pip3'
 
 # - zsh
 alias refresh='source ~/.zshrc'
@@ -21,7 +25,7 @@ alias refresh='source ~/.zshrc'
 alias l='ls -a -1 -X --file-type --color --human-readable'
 alias lsl='ls -a -l --human-readable'
 
-alias v='vim '
+alias v='vim'
 
 alias howdeep='echo $SHLVL'
 

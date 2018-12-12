@@ -5,10 +5,10 @@ export VISUAL=vim
 
 # my scripts
 export PATH="~/code/scripts:$PATH"
-# homebrew
-export PATH="/usr/local/bin:$PATH"
 # misc
 export PATH="~/bin:$PATH"
+# homebrew
+export PATH="/usr/local/bin:$PATH"
 
 # manpath
 export MANPATH="/usr/local/man:$MANPATH"
