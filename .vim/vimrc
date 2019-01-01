@@ -178,7 +178,6 @@ nnoremap <leader>qq :bdelete<CR>
 nnoremap <leader>qw :q<CR>
 nnoremap <leader>qa :qa<CR>
 nnoremap <leader>qc :%bdelete<CR>
-nnoremap <leader>c :q<CR>
 
 nnoremap <leader>a :Rg<Space>
 

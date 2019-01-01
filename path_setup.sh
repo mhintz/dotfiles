@@ -1,10 +1,13 @@
 echo "setting paths"
 
+THIS_DIR=$(dirname $0)
+
 export EDITOR=vim
 export VISUAL=vim
 
-# my scripts
-export PATH="$HOME/code/scripts:$PATH"
+# misc scripts
+export PATH="$THIS_DIR/scripts:$PATH"
+
 # homebrew
 export PATH="/usr/local/bin:$PATH"
 
