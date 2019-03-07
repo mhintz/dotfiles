@@ -173,7 +173,7 @@ nnoremap <leader><C-H> :vert bo help<CR>
 " ****** BUFFERS, WINDOWS, AND TABS ******
 nnoremap <leader>wq :wq<CR>
 nnoremap s :w<CR>
-nnoremap <leader>qq :bdelete<CR>
+nnoremap <leader>qq :bp\|bd #<CR>
 " (Ctrl-w q quits completely)
 nnoremap <leader>qw :q<CR>
 nnoremap <leader>qa :qa<CR>
