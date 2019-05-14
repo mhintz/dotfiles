@@ -23,9 +23,6 @@
 [submodule ".vim/bundle/javascript"]
 	path = .vim/bundle/javascript
 	url = git@github.com:pangloss/vim-javascript.git
-[submodule ".vim/bundle/onedark"]
-	path = .vim/bundle/onedark
-	url = git@github.com:joshdick/onedark.vim.git
 [submodule ".vim/bundle/surround"]
 	path = .vim/bundle/surround
 	url = git://github.com/tpope/vim-surround.git
@@ -41,9 +38,6 @@
 [submodule ".vim/bundle/vim-tmux-focus-events"]
 	path = .vim/bundle/vim-tmux-focus-events
 	url = git://github.com/tmux-plugins/vim-tmux-focus-events.git
-[submodule ".vim/bundle/editorconfig"]
-	path = .vim/bundle/editorconfig
-	url = git@github.com:editorconfig/editorconfig-vim.git
 [submodule ".vim/bundle/neuromancer-colors"]
 	path = .vim/bundle/neuromancer-colors
 	url = git@github.com:Zabanaa/neuromancer.vim.git
@@ -53,9 +47,6 @@
 [submodule ".vim/bundle/oceanic-next"]
 	path = .vim/bundle/oceanic-next
 	url = git@github.com:mhartington/oceanic-next.git
-[submodule ".vim/bundle/vim-vice"]
-	path = .vim/bundle/vim-vice
-	url = git@github.com:bcicen/vim-vice.git
 [submodule ".vim/bundle/fzf"]
 	path = .vim/bundle/fzf
 	url = git@github.com:junegunn/fzf.vim.git
