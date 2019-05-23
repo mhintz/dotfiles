@@ -1,0 +1,12 @@
+# Build Dockerfile in current directory and give it label FOOBAR
+docker build --tag NAME:VALUE -f ./Dockerfile
+
+# run a docker image and map ports
+# --rm is to remove the container once stopped
+# -it is to make it attach to stdin and set up a pseudo-TTY for the container (whatever that is)
+# -p maps a port
+docker run --rm -it -p 3000:3000 -p 3001:3001 IMAGE_ID
+
+# get a bash shell on a running container
+docker exec -it CONTAINER_ID bash
+
