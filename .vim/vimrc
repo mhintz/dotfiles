@@ -179,7 +179,7 @@ nnoremap <leader>qw :q<CR>
 nnoremap <leader>qa :qa<CR>
 nnoremap <leader>qc :%bdelete<CR>
 
-nnoremap <leader>a :Rg<Space>
+nnoremap <leader>a :Rg!<Space>
 
 " move between windows
 " noremap <leader>j <C-W>j
