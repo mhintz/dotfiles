@@ -24,8 +24,8 @@ set lazyredraw
 
 " vim-one color scheme
 " these print formatting chars are required for vim-one
-set t_8b=[48;2;%lu;%lu;%lum
-set t_8f=[38;2;%lu;%lu;%lum
+" set t_8b=[48;2;%lu;%lu;%lum
+" set t_8f=[38;2;%lu;%lu;%lum
 " let g:one_allow_italics = 1
 " set background=dark
 " colorscheme one
@@ -55,26 +55,27 @@ set autoread
 
 " incremental search
 set incsearch
-" highlighted search
-set hlsearch
+" toggle highlighted search on/off
+" set hlsearch
 set nohlsearch
 
 " expected backspace behavior (backspace can delete over indent, eol, and the
 " start of your editing)
 set backspace=indent,eol,start
 " and arrow key movement wraps around line breaks
-set whichwrap+=<,>
+" set whichwrap+=<,>
 
 " history settings
 set history=50
 
 " vim "UI" settings
 set ruler
-set showcmd
+set noshowcmd
 set number
+set relativenumber
 
-set backup
 " set vim directories for undo, backup, and swap files
+" set backup
 set undodir=$HOME/.vim/.undo//
 set backupdir=$HOME/.vim/.backup//
 set directory^=$HOME/.vim/.swp//
@@ -85,8 +86,7 @@ set scrolloff=3
 " allow files to be open as buffers without being visible
 set hidden
 
-" no line wrap
-" set nowrap
+" line wrap settings
 set wrap
 set breakindent
 set breakindentopt=sbr
@@ -101,15 +101,13 @@ set shiftwidth=2
 set expandtab
 set softtabstop=2
 
-set completeopt=menuone
+set completeopt=menuone,noinsert
 
 " ****** SET LEADER KEY ******
 let mapleader = " "
 
 " ****** PLUGIN SETTINGS ******
 
-" vim searches for tags
-set tags=.tags;~/code
 " autotags options
 let g:autotagTagsFile='.tags'
 let g:autotagCtagsCmd = 'rg --files | ctags -R'

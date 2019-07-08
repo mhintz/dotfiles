@@ -25,7 +25,7 @@ alias refresh='source ~/.zshrc'
 alias l='ls -a -1 -X --file-type --color --human-readable'
 alias lsl='ls -a -l --human-readable'
 
-alias v='vim'
+alias v='nvim'
 
 alias howdeep='echo $SHLVL'
 
