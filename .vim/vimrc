@@ -1,21 +1,27 @@
+" plugins with vim-plug
 call plug#begin('~/.vim/bundle')
-Plug 'chaoren/vim-wordmotion'
+" tmux integration
 Plug 'edkolev/tmuxline.vim'
 Plug 'vim-airline/vim-airline'
-Plug 'rakr/vim-one'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'tmux-plugins/vim-tmux-focus-events'
+" highlighting
 Plug 'sheerun/vim-polyglot'
-Plug 'tpope/vim-commentary'
+Plug 'junegunn/seoul256.vim'
+Plug 'rakr/vim-one'
+" ergonomics
+Plug 'chaoren/vim-wordmotion'
 Plug 'tpope/vim-rsi'
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'Raimondi/delimitMate'
-Plug 'tmux-plugins/vim-tmux-focus-events'
-Plug 'junegunn/seoul256.vim'
-Plug 'junegunn/fzf.vim'
-Plug 'christoomey/vim-tmux-navigator'
 Plug 'editorconfig/editorconfig-vim'
+" utilities
 Plug 'ervandew/supertab'
-" Plug 'jason0x43/vim-js-indent'
+Plug 'junegunn/fzf.vim'
+" maybe
 " Plug 'scrooloose/nerdtree'
+" Plug 'jason0x43/vim-js-indent'
 call plug#end()
 
 " compatibility mode
