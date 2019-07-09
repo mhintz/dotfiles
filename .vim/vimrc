@@ -21,6 +21,7 @@ Plug 'ervandew/supertab'
 Plug 'junegunn/fzf.vim'
 " maybe
 " Plug 'scrooloose/nerdtree'
+" Plug 'craigemery/vim-autotag'
 " Plug 'jason0x43/vim-js-indent'
 call plug#end()
 
@@ -132,36 +133,33 @@ let mapleader = " "
 " ****** PLUGIN SETTINGS ******
 
 " autotags options
-let g:autotagTagsFile='.tags'
-let g:autotagCtagsCmd = 'rg --files | ctags -R'
-
-" add fzf to the runtime path
-set rtp+=/usr/local/opt/fzf
+" let g:autotagTagsFile='.tags'
+" let g:autotagCtagsCmd = 'rg --files | ctags -R'
 
 " delimitMate Settings
 let g:delimitMate_expand_cr = 1
 
 " NERDTree Settings
-nnoremap <leader>o :NERDTreeToggle<CR>
-let g:NERDTreeWinSize=30
-let g:NERDTreeShowHidden=1
+" nnoremap <leader>o :NERDTreeToggle<CR>
+" let g:NERDTreeWinSize=30
+" let g:NERDTreeShowHidden=1
 " open a NERDTree automatically (and move to the main window) when vim is opened or a new tab is made
 " autocmd vimenter * NERDTree | wincmd l
 " autocmd tabnew * NERDTree | wincmd l
 " close the nerd tree window if it's the last one open
 " autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" multi-cursor settings
-let g:multi_cursor_next_key='<C-g>'
-let g:multi_cursor_exit_from_visual_mode=0
-
 " vim-airline disable tmuxline integration (it doesn't render correctly)
 let g:airline#extensions#tmuxline#enabled = 0
 let g:airline#extensions#tabline#enabled = 1
 
-" Tmuxline (styles get overriden incorrectly, need to refresh it on enter"
+" Tmuxline (styles get overriden incorrectly, need to refresh it on enter
 let g:tmuxline_powerline_separators = 0
 
+" FZF / ripgrep
+" add fzf to the runtime path
+set rtp+=/usr/local/opt/fzf
+" add ripgrep to the rtp
 set rtp+=/usr/local/bin/rg
 
 command! -bang -nargs=* Rg
@@ -200,9 +198,14 @@ nnoremap <leader>qw :q<CR>
 nnoremap <leader>qa :qa<CR>
 nnoremap <leader>qc :%bdelete<CR>
 
+" fzf-vim mappings
+nnoremap <C-p> :Files<CR>
 nnoremap <leader>a :Rg!<Space>
+nnoremap <leader>p :Buffers<CR>
+nnoremap <leader>f :BLines<CR>
+nnoremap <leader>h :Helptags<CR>
 
-" move between windows
+" move between windows (replaced by vim-tmux-navigator)
 " noremap <leader>j <C-W>j
 " noremap <leader>k <C-W>k
 " noremap <leader>l <C-W>l
@@ -213,17 +216,14 @@ nnoremap <leader>a :Rg!<Space>
 " nnoremap <C-l> <C-W>l
 " nnoremap <C-h> <C-W>h
 
-nnoremap <Tab> <C-w>w
-nnoremap <S-Tab> <C-w>W
+" use tab and shift-tab to navigate between splits
+" nnoremap <Tab> <C-w>w
+" nnoremap <S-Tab> <C-w>W
 
 " Use | and _ to split windows (while preserving original behaviour of
 " [count]bar and [count]_).
-nnoremap <expr><silent> <Bar> v:count == 0 ? "<C-W>v<C-W><Right>" : ":<C-U>normal! 0".v:count."<Bar><CR>"
-nnoremap <expr><silent> -     v:count == 0 ? "<C-W>s<C-W><Down>"  : ":<C-U>normal! ".v:count."-<CR>"
-
-nnoremap <C-p> :Files<CR>
-nnoremap <leader>p :Buffers<CR>
-nnoremap <leader>f :BLines<CR>
+" nnoremap <expr><silent> <Bar> v:count == 0 ? "<C-W>v<C-W><Right>" : ":<C-U>normal! 0".v:count."<Bar><CR>"
+" nnoremap <expr><silent> -     v:count == 0 ? "<C-W>s<C-W><Down>"  : ":<C-U>normal! ".v:count."-<CR>"
 
 " edit the last-edited file
 nnoremap <leader><leader> :e#<CR>
@@ -294,7 +294,7 @@ nnoremap <leader>ll mzO<ESC>`z
 " comment out line
 " nnoremap  gcc
 
-" faster scrolling
+" faster scrolling / movement using the meta key
 " noremap <C-n> 6<C-e>6j
 " noremap <C-m> 6<C-y>6k
 
@@ -346,29 +346,3 @@ nnoremap <C-M-j> mz:m+<cr>`z
 nnoremap <C-M-k> mz:m-2<cr>`z
 vnoremap <C-M-j> :m'>+<cr>`<my`>mzgv`yo`z
 vnoremap <C-M-k> :m'<-2<cr>`>my`<mzgv`yo`z
-
-" moving around in insert mode
-inoremap <M-j> <C-o>j
-inoremap <M-k> <C-o>k
-" inoremap <M-b> <C-o>b
-inoremap <M-e> <ESC>eli
-inoremap <M-w> <C-o>w
-
-" while I learn, some key bindings to make me feel like home :)
-" (there's more to these lines than meets the eye)
-
-" this is <M-Right>
-" inoremap f <C-o>e
-" this is <M-Left> (unfortunately, it is <esc>b so it clashes)
-" inoremap b <C-o>b
-" this is <M-up>
-" inoremap [1;3A <C-o>6k
-" this is <M-down>
-" inoremap [1;3B <C-o>6j
-" this is <M-BS>
-" inoremap  <C-w>
-
-" these lines provide some simple context scrolling in insert mode (I know
-" it's bad to add weird movement commands in insert mode but I can't help it)
-inoremap <M-m> <C-o>6<C-y>
-inoremap <M-n> <C-o>6<C-e>
