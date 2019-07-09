@@ -1,7 +1,24 @@
-execute pathogen#infect()
-" to generate documentation for all pathogen-installed plugins, run :Helptags
+call plug#begin('~/.vim/bundle')
+Plug 'chaoren/vim-wordmotion'
+Plug 'edkolev/tmuxline.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'rakr/vim-one'
+Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-rsi'
+Plug 'tpope/vim-surround'
+Plug 'Raimondi/delimitMate'
+Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'junegunn/seoul256.vim'
+Plug 'junegunn/fzf.vim'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'ervandew/supertab'
+" Plug 'jason0x43/vim-js-indent'
+" Plug 'scrooloose/nerdtree'
+call plug#end()
 
-" this might be unnecessary, but it's nice to be clear
+" compatibility mode
 set nocompatible
 
 " encoding
