@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "bundle-buddy": "^0.2.1",
+    "electron": "^2.0.2",
+    "fsevents": "^1.1.3",
+    "js-langserver": "^0.1.9",
+    "jscodeshift": "^0.4.0",
+    "jsctags": "^5.2.2",
+    "neon-cli": "^0.2.0",
+    "now": "^11.3.8",
+    "parcel-bundler": "^1.8.1",
+    "prettier": "^1.13.7",
+    "roast-my-deps": "^2.0.1",
+    "typescript": "^3.0.3",
+    "typescript-language-server": "^0.3.8",
+    "webpack": "^4.11.1",
+    "webpack-bundle-analyzer": "^2.13.1",
+    "webpack-why": "^0.2.2",
+    "whybundled": "^1.4.2"
+  }
+}
