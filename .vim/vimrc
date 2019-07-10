@@ -199,15 +199,22 @@ let g:LanguageClient_serverCommands = {
 \ 'typescript.tsx': ['/usr/local/bin/typescript-language-server', '--stdio']
 \ }
 
-function LC_maps()
+" hide diagnostic signs
+let g:LanguageClient_diagnosticsSignsMax = 0
+let g:LanguageClient_useVirtualText = 0
+
+function! LC_maps()
   if has_key(g:LanguageClient_serverCommands, &filetype)
-    nnoremap <buffer> K :call LanguageClient#textDocument_hover()<cr>
+    nnoremap <buffer> <leader>K :call LanguageClient#textDocument_hover()<cr>
     nnoremap <buffer> <C-]> :call LanguageClient#textDocument_definition()<CR>
     nnoremap <buffer> <leader>R :call LanguageClient#textDocument_rename()<CR>
   endif
 endfunction
 
-autocmd FileType * call LC_maps()
+augroup languageclient
+  autocmd!
+  autocmd FileType * call LC_maps()
+augroup END
 
 set omnifunc=LanguageClient#omniComplete
 
@@ -218,7 +225,7 @@ endfunction
 
 " ****** Special Case Syntax ******
 augroup thing_orgmode_syntax
-  au!
+  autocmd!
   autocmd BufNewFile,BufRead *.org set syntax=clojure
 augroup END
 
@@ -247,6 +254,10 @@ nnoremap <leader>a :Rg!<Space>
 nnoremap <leader>p :Buffers<CR>
 nnoremap <leader>f :BLines<CR>
 nnoremap <leader>h :Helptags<CR>
+
+" quickfix window toggle
+nmap <leader>cc :cclose<CR>
+nmap <leader>co :copen<CR>
 
 " move between windows (replaced by vim-tmux-navigator)
 " noremap <leader>j <C-W>j
