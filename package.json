@@ -13,7 +13,7 @@
     "typescript": "^3.0.3",
     "typescript-language-server": "^0.3.8",
     "webpack": "^4.11.1",
-    "webpack-bundle-analyzer": "^2.13.1",
+    "webpack-bundle-analyzer": "^3.3.2",
     "webpack-why": "^0.2.2",
     "whybundled": "^1.4.2"
   }
