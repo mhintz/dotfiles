@@ -185,8 +185,8 @@ command! -bang -nargs=? -complete=dir Files
 " for styling the FZF window
 augroup FZF
   autocmd! FileType fzf
-  autocmd  FileType fzf set laststatus=0 noshowmode noruler norelativenumber
-    \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler relativenumber
+  autocmd  FileType fzf set laststatus=0 noshowmode noruler
+    \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 augroup END
 
 imap <c-x><c-f> <plug>(fzf-complete-path)
