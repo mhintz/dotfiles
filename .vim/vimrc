@@ -19,8 +19,9 @@ Plug 'editorconfig/editorconfig-vim'
 " utilities
 Plug 'ervandew/supertab'
 Plug 'junegunn/fzf.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'make release'}
 " maybe
-" Plug 'scrooloose/nerdtree'
 " Plug 'craigemery/vim-autotag'
 " Plug 'jason0x43/vim-js-indent'
 call plug#end()
@@ -117,7 +118,7 @@ set breakindentopt=sbr
 " Unicode curly arrow, space
 set showbreak=↪
 
-" indentation settings
+" default indentation settings
 set autoindent
 set smartindent
 set tabstop=2
@@ -125,7 +126,14 @@ set shiftwidth=2
 set expandtab
 set softtabstop=2
 
+" completion menu options
 set completeopt=menuone,noinsert
+
+" netrw settings
+augroup NETRW
+  autocmd! FileType netrw
+  autocmd FileType netrw setl bufhidden=delete
+augroup END
 
 " ****** SET LEADER KEY ******
 let mapleader = " "
@@ -140,9 +148,9 @@ let mapleader = " "
 let g:delimitMate_expand_cr = 1
 
 " NERDTree Settings
-" nnoremap <leader>o :NERDTreeToggle<CR>
-" let g:NERDTreeWinSize=30
-" let g:NERDTreeShowHidden=1
+nnoremap <leader>o :NERDTreeToggle<CR>
+let g:NERDTreeWinSize=30
+let g:NERDTreeShowHidden=1
 " open a NERDTree automatically (and move to the main window) when vim is opened or a new tab is made
 " autocmd vimenter * NERDTree | wincmd l
 " autocmd tabnew * NERDTree | wincmd l
@@ -156,10 +164,12 @@ let g:airline#extensions#tabline#enabled = 1
 " Tmuxline (styles get overriden incorrectly, need to refresh it on enter
 let g:tmuxline_powerline_separators = 0
 
-" FZF / ripgrep
-" add fzf to the runtime path
+" Supertab
+let g:SuperTabDefaultCompletionType = "context"
+
+" FZF + ripgrep
+" add to runtime path
 set rtp+=/usr/local/opt/fzf
-" add ripgrep to the rtp
 set rtp+=/usr/local/bin/rg
 
 command! -bang -nargs=* Rg
@@ -169,6 +179,39 @@ command! -bang -nargs=* Rg
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
 
+command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+
+" for styling the FZF window
+augroup FZF
+  autocmd! FileType fzf
+  autocmd  FileType fzf set laststatus=0 noshowmode noruler norelativenumber
+    \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler relativenumber
+augroup END
+
+imap <c-x><c-f> <plug>(fzf-complete-path)
+
+" Language Server Client
+let g:LanguageClient_serverCommands = {
+\ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+\ 'javascript': ['/usr/local/bin/js-langserver', '--stdio'],
+\ 'typescript': ['/usr/local/bin/typescript-language-server', '--stdio'],
+\ 'typescript.tsx': ['/usr/local/bin/typescript-language-server', '--stdio']
+\ }
+
+function LC_maps()
+  if has_key(g:LanguageClient_serverCommands, &filetype)
+    nnoremap <buffer> K :call LanguageClient#textDocument_hover()<cr>
+    nnoremap <buffer> <C-]> :call LanguageClient#textDocument_definition()<CR>
+    nnoremap <buffer> <leader>R :call LanguageClient#textDocument_rename()<CR>
+  endif
+endfunction
+
+autocmd FileType * call LC_maps()
+
+set omnifunc=LanguageClient#omniComplete
+
+" Random
 function! g:PrintFullFilePath()
     echo expand('%:p')
 endfunction
