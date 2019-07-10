@@ -127,7 +127,7 @@ set expandtab
 set softtabstop=2
 
 " completion menu options
-set completeopt=menuone,noinsert
+set completeopt=menuone
 
 " netrw settings
 augroup NETRW
@@ -194,10 +194,9 @@ imap <c-x><c-f> <plug>(fzf-complete-path)
 " Language Server Client
 let g:LanguageClient_serverCommands = {
 \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-\ 'javascript': ['/usr/local/bin/js-langserver', '--stdio'],
-\ 'typescript': ['/usr/local/bin/typescript-language-server', '--stdio'],
-\ 'typescript.tsx': ['/usr/local/bin/typescript-language-server', '--stdio']
 \ }
+" if you can get typescript/tsx combined support working
+" \ 'typescript': ['/usr/local/bin/typescript-language-server', '--stdio'],
 
 " hide diagnostic signs
 let g:LanguageClient_diagnosticsSignsMax = 0
