@@ -1,5 +1,7 @@
 THIS_DIR=$(dirname $(readlink -f $0))
 
+# will need to have homebrew and oh my zsh installed
+
 # initial install, some other stuff requires this
 brew install rustup
 rustup install stable

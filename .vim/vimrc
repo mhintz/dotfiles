@@ -237,7 +237,7 @@ nnoremap ; :
 " manually reload vim config
 nnoremap <leader>r :source ~/.vim/vimrc<CR>
 " open help in a side window
-nnoremap <leader><C-H> :vert bo help<CR>
+nnoremap <leader>H :vert bo help<CR>
 
 " ****** BUFFERS, WINDOWS, AND TABS ******
 nnoremap <leader>wq :wq<CR>
