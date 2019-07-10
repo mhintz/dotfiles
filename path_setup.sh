@@ -2,8 +2,8 @@ echo "setting paths"
 
 THIS_DIR=$(dirname $0)
 
-export EDITOR=vim
-export VISUAL=vim
+export EDITOR=nvim
+export VISUAL=nvim
 
 # misc scripts
 export PATH="$THIS_DIR/scripts:$PATH"
