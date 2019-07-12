@@ -17,11 +17,12 @@ Plug 'tpope/vim-surround'
 Plug 'Raimondi/delimitMate'
 Plug 'editorconfig/editorconfig-vim'
 " utilities
-Plug 'ervandew/supertab'
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
-Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'make release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'ervandew/supertab'
 " maybe
+" Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'make release'}
 " Plug 'craigemery/vim-autotag'
 " Plug 'jason0x43/vim-js-indent'
 call plug#end()
