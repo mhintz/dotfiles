@@ -98,6 +98,8 @@ set ruler
 set noshowcmd
 set number
 set relativenumber
+set cmdheight=2
+set updatetime=300
 
 " set vim directories for undo, backup, and swap files
 " set backup
@@ -128,6 +130,7 @@ set softtabstop=2
 
 " completion menu options
 set completeopt=menuone
+set shortmess+=c
 
 " netrw settings
 augroup NETRW
@@ -189,33 +192,35 @@ augroup FZF
     \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 augroup END
 
+" some fun fzf completions
+imap <c-x><c-l> <plug>(fzf-complete-line)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 
 " Language Server Client
-let g:LanguageClient_serverCommands = {
-\ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-\ }
+" let g:LanguageClient_serverCommands = {
+" \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+" \ }
 " if you can get typescript/tsx combined support working
 " \ 'typescript': ['/usr/local/bin/typescript-language-server', '--stdio'],
 
 " hide diagnostic signs
-let g:LanguageClient_diagnosticsSignsMax = 0
-let g:LanguageClient_useVirtualText = 0
+" let g:LanguageClient_diagnosticsSignsMax = 0
+" let g:LanguageClient_useVirtualText = 0
 
-function! LC_maps()
-  if has_key(g:LanguageClient_serverCommands, &filetype)
-    nnoremap <buffer> <leader>K :call LanguageClient#textDocument_hover()<cr>
-    nnoremap <buffer> <C-]> :call LanguageClient#textDocument_definition()<CR>
-    nnoremap <buffer> <leader>R :call LanguageClient#textDocument_rename()<CR>
-  endif
-endfunction
+" function! LC_maps()
+"   if has_key(g:LanguageClient_serverCommands, &filetype)
+"     nnoremap <buffer> <leader>K :call LanguageClient#textDocument_hover()<cr>
+"     nnoremap <buffer> <C-]> :call LanguageClient#textDocument_definition()<CR>
+"     nnoremap <buffer> <leader>R :call LanguageClient#textDocument_rename()<CR>
+"   endif
+" endfunction
 
-augroup languageclient
-  autocmd!
-  autocmd FileType * call LC_maps()
-augroup END
+" augroup languageclient
+"   autocmd!
+"   autocmd FileType * call LC_maps()
+" augroup END
 
-set omnifunc=LanguageClient#omniComplete
+" set omnifunc=LanguageClient#omniComplete
 
 " Random
 function! g:PrintFullFilePath()
