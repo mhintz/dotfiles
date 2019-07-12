@@ -20,6 +20,9 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-rls', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
 " Plug 'ervandew/supertab'
 " maybe
 " Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'make release'}
@@ -46,7 +49,7 @@ set ttyfast
 set lazyredraw
 
 " get those nice colors
-" set termguicolors
+set termguicolors
 
 " vim-one color scheme
 " these print formatting chars are required for vim-one
@@ -57,7 +60,8 @@ set lazyredraw
 " colorscheme one
 
 " seoul256 theme
-let g:seoul256_background = 239
+" let g:seoul256_background = 239
+let g:seoul256_background = 0
 set background=dark
 colorscheme seoul256
 
@@ -197,32 +201,6 @@ augroup END
 imap <c-x><c-l> <plug>(fzf-complete-line)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 
-" Language Server Client
-" let g:LanguageClient_serverCommands = {
-" \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-" \ }
-" if you can get typescript/tsx combined support working
-" \ 'typescript': ['/usr/local/bin/typescript-language-server', '--stdio'],
-
-" hide diagnostic signs
-" let g:LanguageClient_diagnosticsSignsMax = 0
-" let g:LanguageClient_useVirtualText = 0
-
-" function! LC_maps()
-"   if has_key(g:LanguageClient_serverCommands, &filetype)
-"     nnoremap <buffer> <leader>K :call LanguageClient#textDocument_hover()<cr>
-"     nnoremap <buffer> <C-]> :call LanguageClient#textDocument_definition()<CR>
-"     nnoremap <buffer> <leader>R :call LanguageClient#textDocument_rename()<CR>
-"   endif
-" endfunction
-
-" augroup languageclient
-"   autocmd!
-"   autocmd FileType * call LC_maps()
-" augroup END
-
-" set omnifunc=LanguageClient#omniComplete
-
 " conquer of completion bindings
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
@@ -238,12 +216,6 @@ endfunction
 nmap <silent> [c <Plug>(coc-diagnostic-prev)
 nmap <silent> ]c <Plug>(coc-diagnostic-next)
 
-nmap <silent> <C-]> <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-nnoremap <silent> <leader>K :call <SID>show_documentation()<CR>
-
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
@@ -252,7 +224,25 @@ function! s:show_documentation()
   endif
 endfunction
 
-nmap <leader>R <Plug>(coc-rename)
+command! -nargs=0 Format :call CocAction('format')
+
+" conditional keybindings scoped to certain file types
+let s:CoC_Whitelist = ["javascript", "javascript.jsx", "typescript", "typescript.tsx", "python", "rust"]
+function! LC_maps()
+  if (index(s:CoC_Whitelist, &filetype) >= 0)
+    nmap <buffer> <silent> <C-]> <Plug>(coc-definition)
+    nnoremap <buffer> <silent> <leader>K :call <SID>show_documentation()<CR>
+    nmap <buffer> <silent> gy <Plug>(coc-type-definition)
+    nmap <buffer> <silent> gi <Plug>(coc-implementation)
+    nmap <buffer> <silent> gr <Plug>(coc-references)
+    nmap <buffer> <leader>R <Plug>(coc-rename)
+  endif
+endfunction
+
+augroup CoC
+  autocmd!
+  autocmd FileType * call LC_maps()
+augroup END
 
 " Random
 function! g:PrintFullFilePath()
@@ -292,14 +282,8 @@ nnoremap <leader>f :BLines<CR>
 nnoremap <leader>h :Helptags<CR>
 
 " quickfix window toggle
-nmap <leader>cc :cclose<CR>
-nmap <leader>co :copen<CR>
-
-" move between windows (replaced by vim-tmux-navigator)
-" nnoremap <C-j> <C-W>j
-" nnoremap <C-k> <C-W>k
-" nnoremap <C-l> <C-W>l
-" nnoremap <C-h> <C-W>h
+nmap <leader>cc :lclose<CR>
+nmap <leader>co :lopen<CR>
 
 " edit the last-edited file
 nnoremap <leader><leader> :e#<CR>

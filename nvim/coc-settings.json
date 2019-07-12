@@ -1,0 +1,6 @@
+{
+  "tsserver.enableJavascript": false,
+  "tsserver.npm": "~/.nodenv/shims/npm",
+  "tsserver.formatOnType": false,
+  "typescript.suggest.completeFunctionCalls": false
+}
