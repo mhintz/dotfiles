@@ -45,14 +45,47 @@ filetype plugin indent on
 " syntax highlighting
 syntax on
 
-set re=1
+" optimizations for rendering speed
+" (optional) force the old regex engine, which is a bit faster
+" set re=1
+" limit time which can be spent on syntax highlighting
+set redrawtime=200
+" actually not needed for neovim but helps for vim
 set ttyfast
+" lazily redraw the screen
 set lazyredraw
 
 " get those nice colors
-set termguicolors
+if has('nvim')
+  set termguicolors
+endif
 
-" vim-one color scheme
+" seoul256 colors for built-in terminal, also fzf preview window
+let g:terminal_color_0  = '#606060'
+let g:terminal_color_1  = '#df9a98'
+let g:terminal_color_2  = '#719672'
+let g:terminal_color_3  = '#e0bb71'
+let g:terminal_color_4  = '#96bbdc'
+let g:terminal_color_5  = '#dfbdbc'
+let g:terminal_color_6  = '#97bcbc'
+let g:terminal_color_7  = '#d8d8d8'
+let g:terminal_color_8  = '#757575'
+let g:terminal_color_9  = '#e07798'
+let g:terminal_color_10 = '#97bb98'
+let g:terminal_color_11 = '#ffdd98'
+let g:terminal_color_12 = '#badcfb'
+let g:terminal_color_13 = '#ffbebc'
+let g:terminal_color_14 = '#96ddde'
+let g:terminal_color_15 = '#e9e9e9'
+
+" seoul256 background to match terminal
+let g:seoul256_background = 237
+set background=dark
+colorscheme seoul256
+
+" other themes
+
+" vim-one
 " these print formatting chars are required for vim-one
 " set t_8b=[48;2;%lu;%lu;%lum
 " set t_8f=[38;2;%lu;%lu;%lum
@@ -60,13 +93,6 @@ set termguicolors
 " set background=dark
 " colorscheme one
 
-" seoul256 theme
-" let g:seoul256_background = 239
-let g:seoul256_background = 0
-set background=dark
-colorscheme seoul256
-
-" other themes
 " colorscheme OceanicNext
 " colorscheme neuromancer
 " colorscheme vice
@@ -79,6 +105,7 @@ let g:airline_theme='one'
 " set synmaxcol=256
 " syntax sync minlines=128
 
+" mouse controls if desired
 set mouse=a
 
 " reloads when a file is changed in the background
@@ -340,6 +367,7 @@ nnoremap <leader>ld yyp
 " move line downward by inserting a line above it
 nnoremap <leader>ll mzO<ESC>`z
 
+" cursor and scrolling
 noremap <M-n> 6<C-e>6j
 noremap <M-m> 6<C-y>6k
 
@@ -349,9 +377,11 @@ noremap <M-k> 6k
 noremap <C-M-n> 6<C-e>
 noremap <C-M-m> 6<C-y>
 
+" half-pages
 noremap <M-d> <C-d>
 noremap <M-u> <C-u>
 
+" pages
 noremap <M-f> <C-f>
 noremap <M-b> <C-b>
 
