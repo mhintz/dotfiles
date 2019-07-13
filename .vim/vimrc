@@ -279,7 +279,7 @@ function! g:PrintFullFilePath()
 endfunction
 
 " ****** Special Case Syntax ******
-augroup thing_orgmode_syntax
+augroup ThingOrgModeSyntax
   autocmd!
   autocmd BufNewFile,BufRead *.org set syntax=clojure
 augroup END
