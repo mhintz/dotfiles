@@ -230,6 +230,7 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 
 " conquer of completion bindings
+" tab completion
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
@@ -241,9 +242,6 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-nmap <silent> [c <Plug>(coc-diagnostic-prev)
-nmap <silent> ]c <Plug>(coc-diagnostic-next)
-
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
@@ -252,12 +250,15 @@ function! s:show_documentation()
   endif
 endfunction
 
+" format function (probably needs work / configuration)
 command! -nargs=0 Format :call CocAction('format')
 
 " conditional keybindings scoped to certain file types
 let s:CoC_Whitelist = ["javascript", "javascript.jsx", "typescript", "typescript.tsx", "python", "rust"]
-function! LC_maps()
+function! CoC_key_maps()
   if (index(s:CoC_Whitelist, &filetype) >= 0)
+    nmap <buffer> <silent> [c <Plug>(coc-diagnostic-prev)
+    nmap <buffer> <silent> ]c <Plug>(coc-diagnostic-next)
     nmap <buffer> <silent> <C-]> <Plug>(coc-definition)
     nnoremap <buffer> <silent> <leader>K :call <SID>show_documentation()<CR>
     nmap <buffer> <silent> gt <Plug>(coc-type-definition)
@@ -269,7 +270,7 @@ endfunction
 
 augroup CoC
   autocmd!
-  autocmd FileType * call LC_maps()
+  autocmd FileType * call CoC_key_maps()
 augroup END
 
 " Random
