@@ -1,4 +1,10 @@
 {
+  "suggest.autoTrigger": "trigger",
+  "suggest.timeout": 5000,
+  "diagnostic.messageTarget": "echo",
+  "diagnostic.refreshAfterSave": true,
+  "signature.triggerSignatureWait": 80,
+  "coc.preferences.extensionUpdateCheck": "never",
   "tsserver.enableJavascript": false,
   "tsserver.npm": "~/.nodenv/shims/npm",
   "tsserver.formatOnType": false,

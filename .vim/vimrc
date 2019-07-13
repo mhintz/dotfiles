@@ -23,6 +23,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-rls', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
 " Plug 'ervandew/supertab'
 " maybe
 " Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'make release'}
@@ -232,7 +233,7 @@ function! LC_maps()
   if (index(s:CoC_Whitelist, &filetype) >= 0)
     nmap <buffer> <silent> <C-]> <Plug>(coc-definition)
     nnoremap <buffer> <silent> <leader>K :call <SID>show_documentation()<CR>
-    nmap <buffer> <silent> gy <Plug>(coc-type-definition)
+    nmap <buffer> <silent> gt <Plug>(coc-type-definition)
     nmap <buffer> <silent> gi <Plug>(coc-implementation)
     nmap <buffer> <silent> gr <Plug>(coc-references)
     nmap <buffer> <leader>R <Plug>(coc-rename)
@@ -281,9 +282,11 @@ nnoremap <leader>p :Buffers<CR>
 nnoremap <leader>f :BLines<CR>
 nnoremap <leader>h :Helptags<CR>
 
-" quickfix window toggle
-nmap <leader>cc :lclose<CR>
-nmap <leader>co :lopen<CR>
+" quickfix and location list window toggles
+nmap <leader>co :copen<CR>
+nmap <leader>cc :cclose<CR>
+nmap <leader>lo :lopen<CR>
+nmap <leader>lc :lclose<CR>
 
 " edit the last-edited file
 nnoremap <leader><leader> :e#<CR>
