@@ -254,7 +254,7 @@ endfunction
 command! -nargs=0 Format :call CocAction('format')
 
 " conditional keybindings scoped to certain file types
-let s:CoC_Whitelist = ["javascript", "javascript.jsx", "typescript", "typescript.tsx", "python", "rust"]
+let s:CoC_Whitelist = ["javascript", "javascript.jsx", "typescript", "typescript.tsx", "python", "rust", "go"]
 function! CoC_key_maps()
   if (index(s:CoC_Whitelist, &filetype) >= 0)
     nmap <buffer> <silent> [c <Plug>(coc-diagnostic-prev)

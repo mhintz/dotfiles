@@ -8,5 +8,12 @@
   "tsserver.enableJavascript": false,
   "tsserver.npm": "~/.nodenv/shims/npm",
   "tsserver.formatOnType": false,
-  "typescript.suggest.completeFunctionCalls": false
+  "typescript.suggest.completeFunctionCalls": false,
+  "languageserver": {
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/", "Gopkg.toml"],
+      "filetypes": ["go"]
+    }
+  }
 }

@@ -28,6 +28,7 @@ export RUST_BACKTRACE=1 # Rust error backtraces on by default
 # - GOPATH
 export GOPATH="$HOME/code/go"
 export PATH="$PATH:$GOPATH/bin"
+eval "$(gimme 1.12.5)"
 
 # - rbenv aliases
 # eval "$(rbenv init -)"
