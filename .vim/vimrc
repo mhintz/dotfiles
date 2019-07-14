@@ -257,14 +257,17 @@ command! -nargs=0 Format :call CocAction('format')
 let s:CoC_Whitelist = ["javascript", "javascript.jsx", "typescript", "typescript.tsx", "python", "rust", "go"]
 function! CoC_key_maps()
   if (index(s:CoC_Whitelist, &filetype) >= 0)
+    nmap <buffer> <silent> <leader>D <Plug>(coc-diagnostic-info)
     nmap <buffer> <silent> [c <Plug>(coc-diagnostic-prev)
     nmap <buffer> <silent> ]c <Plug>(coc-diagnostic-next)
-    nmap <buffer> <silent> <C-]> <Plug>(coc-definition)
     nnoremap <buffer> <silent> <leader>K :call <SID>show_documentation()<CR>
+    nmap <buffer> <silent> <C-]> <Plug>(coc-definition)
+    nmap <buffer> <silent> gd <Plug>(coc-declaration)
     nmap <buffer> <silent> gt <Plug>(coc-type-definition)
     nmap <buffer> <silent> gi <Plug>(coc-implementation)
     nmap <buffer> <silent> gr <Plug>(coc-references)
     nmap <buffer> <leader>R <Plug>(coc-rename)
+    nmap <buffer> <leader>rf <Plug>(coc-refactor)
   endif
 endfunction
 
