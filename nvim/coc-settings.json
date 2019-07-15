@@ -9,6 +9,8 @@
   "tsserver.npm": "~/.nodenv/shims/npm",
   "tsserver.formatOnType": false,
   "typescript.suggest.completeFunctionCalls": false,
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": true,
   "languageserver": {
     "golang": {
       "command": "gopls",
