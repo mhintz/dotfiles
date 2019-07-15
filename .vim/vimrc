@@ -47,7 +47,9 @@ syntax on
 
 " optimizations for rendering speed
 " (optional) force the old regex engine, which is a bit faster
-" set re=1
+if !has('nvim')
+  set re=1
+endif
 " limit time which can be spent on syntax highlighting
 set redrawtime=200
 " actually not needed for neovim but helps for vim
@@ -55,7 +57,11 @@ set ttyfast
 " lazily redraw the screen
 set lazyredraw
 
-" get those nice colors
+" these print formatting chars are required for truecolor support in vim
+" set t_Co=256
+" set t_8b=[48;2;%lu;%lu;%lum
+" set t_8f=[38;2;%lu;%lu;%lum
+" get those nice colors in nvim's terminal
 if has('nvim')
   set termguicolors
 endif
@@ -86,9 +92,6 @@ colorscheme seoul256
 " other themes
 
 " vim-one
-" these print formatting chars are required for vim-one
-" set t_8b=[48;2;%lu;%lu;%lum
-" set t_8f=[38;2;%lu;%lu;%lum
 " let g:one_allow_italics = 1
 " set background=dark
 " colorscheme one
