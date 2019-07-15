@@ -50,8 +50,8 @@ syntax on
 if !has('nvim')
   set re=1
 endif
-" limit time which can be spent on syntax highlighting
-set redrawtime=200
+" limit time which can be spent on syntax highlighting (ms)
+set redrawtime=50
 " actually not needed for neovim but helps for vim
 set ttyfast
 " lazily redraw the screen
@@ -257,7 +257,7 @@ endfunction
 command! -nargs=0 Format :call CocAction('format')
 
 " conditional keybindings scoped to certain file types
-let s:CoC_Whitelist = ["javascript", "javascript.jsx", "typescript", "typescript.tsx", "python", "rust", "go"]
+let s:CoC_Whitelist = ["typescript", "typescript.tsx", "python", "rust", "go"]
 function! CoC_key_maps()
   if (index(s:CoC_Whitelist, &filetype) >= 0)
     nmap <buffer> <silent> <leader>D <Plug>(coc-diagnostic-info)
@@ -269,6 +269,7 @@ function! CoC_key_maps()
     nmap <buffer> <silent> gt <Plug>(coc-type-definition)
     nmap <buffer> <silent> gi <Plug>(coc-implementation)
     nmap <buffer> <silent> gr <Plug>(coc-references)
+    " nmap <buffer> <silent> gf <Plug>(coc-openlink)
     nmap <buffer> <leader>R <Plug>(coc-rename)
     nmap <buffer> <leader>rf <Plug>(coc-refactor)
   endif
