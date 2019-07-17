@@ -1,13 +1,8 @@
 {
   "dependencies": {
     "bundle-buddy": "^0.2.1",
-    "electron": "^2.0.2",
     "fsevents": "^1.1.3",
-    "jscodeshift": "^0.4.0",
     "jsctags": "^5.2.2",
-    "neon-cli": "^0.2.0",
-    "now": "^11.3.8",
-    "parcel-bundler": "^1.8.1",
     "prettier": "^1.13.7",
     "roast-my-deps": "^2.0.1",
     "typescript": "^3.0.3",
