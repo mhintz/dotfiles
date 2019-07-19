@@ -135,12 +135,16 @@ set noshowcmd
 set number
 set relativenumber
 set cmdheight=2
+
+" settings which help CoC.nvim servers
+set nobackup
+set nowritebackup
 set updatetime=300
 
 " set vim directories for undo, backup, and swap files
 " set backup
+" set backupdir=$HOME/.vim/.backup//
 set undodir=$HOME/.vim/.undo//
-set backupdir=$HOME/.vim/.backup//
 set directory^=$HOME/.vim/.swp//
 
 " try to keep the cursor at least 3 lines from the edge of the window
@@ -239,6 +243,8 @@ inoremap <silent><expr> <TAB>
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" use enter to confirm completions - but breaks expansion of brackets on enter
+" inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 function! s:check_back_space() abort
   let col = col('.') - 1
