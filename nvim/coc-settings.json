@@ -1,4 +1,5 @@
 {
+  "coc.preferences.timeout": 2000,
   "suggest.autoTrigger": "trigger",
   "suggest.timeout": 5000,
   "diagnostic.messageTarget": "echo",
