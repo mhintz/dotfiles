@@ -19,10 +19,14 @@ ln -s $THIS_DIR/package.json $(yarn global dir)/package.json
 # rust/cargo (need to install contents of .crates.toml manually)
 ln -s $THIS_DIR/.crates.toml ~/.cargo/.crates.toml
 
-# vim
+# vim / nvim
 mkdir -p ~/.config
 ln -s $THIS_DIR/.vim ~/.vim
 ln -s $THIS_DIR/nvim ~/.config/nvim
+# vim-plug
+curl -fLo $THIS_DIR/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+mkdir -p $THIS_DIR/.vim/autoload
+ln -s $THIS_DIR/nvim/autoload/plug.vim $THIS_DIR/.vim/autoload/plug.vim
 
 # tmux
 ln -s $THIS_DIR/.tmux.conf ~/.tmux.conf
