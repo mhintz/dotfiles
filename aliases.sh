@@ -50,6 +50,11 @@ makectags() {
 
 space_seq() { seq $1 $2 | tr '\n' ' ' | head -c -1 }
 
+# find the commit which merged $2 into $1
+find_merge_for() {
+  git log $2..$1 --ancestry-path --merges --reverse
+}
+
 # - Cargo
 alias cgoc='cargo clean'
 alias cgob='cargo build'
@@ -58,6 +63,7 @@ alias cgor='cargo run'
 # - Git
 # alias gb='GIT_PAGER=cat git branch'
 alias gs='git status'
+alias gcn='git commit -n'
 alias gits='git status'
 alias gitd='git diff'
 alias gdc='git diff --cached'
