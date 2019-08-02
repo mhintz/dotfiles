@@ -7,8 +7,9 @@
     "roast-my-deps": "^2.0.1",
     "typescript": "^3.0.3",
     "typescript-language-server": "^0.3.8",
-    "webpack": "^4.11.1",
+    "webpack": "^4.39.1",
     "webpack-bundle-analyzer": "^3.3.2",
+    "webpack-cli": "^3.3.6",
     "webpack-why": "^0.2.2",
     "whybundled": "^1.4.2"
   }
