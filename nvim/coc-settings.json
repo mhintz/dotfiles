@@ -1,10 +1,9 @@
 {
   "suggest.autoTrigger": "trigger",
   "suggest.timeout": 5000,
-  "diagnostic.messageTarget": "echo",
   "diagnostic.refreshAfterSave": true,
-  "diagnostic.locationlist": true,
   "signature.triggerSignatureWait": 80,
+  "codeLens.enable": false,
   "coc.preferences.extensionUpdateCheck": "never",
   "tsserver.enableJavascript": false,
   "tsserver.npm": "~/.nodenv/shims/npm",
@@ -12,7 +11,6 @@
   "typescript.implementationsCodeLens.enable": false,
   "typescript.referencesCodeLens.enable": false,
   "typescript.suggestionActions.enabled": false,
-  "typescript.suggest.completeFunctionCalls": false,
   "python.linting.enabled": true,
   "python.linting.pylintEnabled": true,
   "languageserver": {

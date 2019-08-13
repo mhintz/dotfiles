@@ -19,7 +19,7 @@ Plug 'editorconfig/editorconfig-vim'
 " utilities
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
-Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'master'}
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-rls', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
@@ -211,6 +211,7 @@ let g:tmuxline_powerline_separators = 0
 let g:SuperTabDefaultCompletionType = "context"
 
 " FZF + ripgrep
+
 " add to runtime path
 set rtp+=/usr/local/opt/fzf
 set rtp+=/usr/local/bin/rg
@@ -236,7 +237,8 @@ augroup END
 imap <c-x><c-l> <plug>(fzf-complete-line)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 
-" conquer of completion bindings
+" CoC-NVIM
+
 " tab completion
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
@@ -263,13 +265,17 @@ endfunction
 command! -nargs=0 Format :call CocAction('format')
 
 " conditional keybindings scoped to certain file types
-let s:CoC_Whitelist = ["typescript", "typescript.tsx", "python", "rust", "go"]
+let s:CoC_Whitelist = ["typescript", "typescript.tsx", "python", "rust", "go", "vim", "help"]
 function! CoC_key_maps()
   if (index(s:CoC_Whitelist, &filetype) >= 0)
+    " keymaps for diagnostic info
     nmap <buffer> <silent> <leader>D <Plug>(coc-diagnostic-info)
     nmap <buffer> <silent> [c <Plug>(coc-diagnostic-prev)
     nmap <buffer> <silent> ]c <Plug>(coc-diagnostic-next)
+    " keymaps for calling the show_documentation function defined above
     nnoremap <buffer> <silent> <leader>K :call <SID>show_documentation()<CR>
+    nnoremap <buffer> <silent> gh :call <SID>show_documentation()<CR>
+    " keymaps for jumping around the code
     nmap <buffer> <silent> <C-]> <Plug>(coc-definition)
     nmap <buffer> <silent> gd <Plug>(coc-declaration)
     nmap <buffer> <silent> gt <Plug>(coc-type-definition)
