@@ -24,9 +24,9 @@ mkdir -p ~/.config
 ln -s $THIS_DIR/.vim ~/.vim
 ln -s $THIS_DIR/nvim ~/.config/nvim
 # vim-plug
-curl -fLo $THIS_DIR/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-mkdir -p $THIS_DIR/.vim/autoload
-ln -s $THIS_DIR/nvim/autoload/plug.vim $THIS_DIR/.vim/autoload/plug.vim
+curl -fLo $THIS_DIR/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+mkdir -p $THIS_DIR/nvim/autoload
+ln -s $THIS_DIR/.vim/autoload/plug.vim $THIS_DIR/nvim/autoload/plug.vim
 
 # tmux
 ln -s $THIS_DIR/.tmux.conf ~/.tmux.conf

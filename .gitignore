@@ -1,6 +1,6 @@
 nvim/autoload/plug.vim
-nvim/autoload/plug.vim.old
 .vim/autoload/plug.vim
+.vim/autoload/plug.vim.old
 .vim/bundle
 .vim/.netrwhist
 .vim/.backup
