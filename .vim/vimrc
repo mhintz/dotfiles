@@ -264,6 +264,9 @@ endfunction
 " format function (probably needs work / configuration)
 command! -nargs=0 Format :call CocAction('format')
 
+" keymaps for CoC
+nmap <buffer> <leader>rsc :CocRestart<CR>
+
 " conditional keybindings scoped to certain file types
 let s:CoC_Whitelist = ["typescript", "typescript.tsx", "python", "rust", "go", "vim", "help"]
 function! CoC_key_maps()
