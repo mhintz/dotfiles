@@ -312,7 +312,7 @@ augroup END
 nnoremap ; :
 
 " manually reload vim config
-nnoremap <leader>r :source ~/.vim/vimrc<CR>
+nnoremap <leader>rv :source ~/.vim/vimrc<CR>
 " open help in a side window
 nnoremap <leader>H :vert bo help<CR>
 
