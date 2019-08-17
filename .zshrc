@@ -72,12 +72,13 @@ source $THIS_DIR/aliases.sh
 
 # set up fzf (https://github.com/junegunn/fzf) for the command line
 
-export FZF_DEFAULT_COMMAND='fd -H -E .git'
-
 # load fzf zsh commands and completion
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f $THIS_DIR/.fzf.zsh ] && source $THIS_DIR/.fzf.zsh
 
+# default settings
+# export FZF_TMUX=1 # command-line fzf opens in a tmux split
 export FZF_CTRL_T_COMMAND='fd -H -E ".git"'
+export FZF_DEFAULT_COMMAND='fd -H -E .git'
 
 # Use fd (https://github.com/sharkdp/fd) instead of the default find
 # command for listing path candidates.
