@@ -5,6 +5,7 @@
   "signature.triggerSignatureWait": 80,
   "codeLens.enable": false,
   "coc.preferences.extensionUpdateCheck": "never",
+  "coc.preferences.hoverTarget": "echo",
   "tsserver.enableJavascript": false,
   "tsserver.npm": "~/.nodenv/shims/npm",
   "tsserver.formatOnType": false,

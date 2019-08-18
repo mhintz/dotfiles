@@ -24,9 +24,8 @@ Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-rls', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
-" Plug 'ervandew/supertab'
 " maybe
-" Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'make release'}
+" Plug 'ervandew/supertab'
 " Plug 'craigemery/vim-autotag'
 " Plug 'jason0x43/vim-js-indent'
 call plug#end()
@@ -265,7 +264,7 @@ endfunction
 command! -nargs=0 Format :call CocAction('format')
 
 " keymaps for CoC
-nmap <buffer> <leader>rsc :CocRestart<CR>
+nmap <leader>rsc :CocRestart<CR>
 
 " conditional keybindings scoped to certain file types
 let s:CoC_Whitelist = ["typescript", "typescript.tsx", "python", "rust", "go", "vim", "help"]
@@ -280,19 +279,25 @@ function! CoC_key_maps()
     nnoremap <buffer> <silent> gh :call <SID>show_documentation()<CR>
     " keymaps for jumping around the code
     nmap <buffer> <silent> <C-]> <Plug>(coc-definition)
-    nmap <buffer> <silent> gd <Plug>(coc-declaration)
     nmap <buffer> <silent> gt <Plug>(coc-type-definition)
     nmap <buffer> <silent> gi <Plug>(coc-implementation)
     nmap <buffer> <silent> gr <Plug>(coc-references)
-    " nmap <buffer> <silent> gf <Plug>(coc-openlink)
     nmap <buffer> <leader>R <Plug>(coc-rename)
     nmap <buffer> <leader>rf <Plug>(coc-refactor)
+    " these commands don't work as expected on the filetypes where CoC is set up (right now)
+    " nmap <buffer> <silent> gd <Plug>(coc-declaration)
+    " nmap <buffer> <silent> gf <Plug>(coc-openlink)
   endif
+endfunction
+
+function! CoC_notify_init()
+  echohl MoreMsg | echom 'coc.nvim initialized!' | echohl None
 endfunction
 
 augroup CoC
   autocmd!
   autocmd FileType * call CoC_key_maps()
+  autocmd User CocNvimInit call CoC_notify_init()
 augroup END
 
 " Random
