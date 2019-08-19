@@ -118,6 +118,7 @@ rif() {
   setopt localoptions pipefail 2> /dev/null
   local FZF_PREVIEW_CMD="highlight -O ansi -l --force {} 2> /dev/null | rg --colors 'match:bg:yellow' --pretty --context 8 $1"
   replacefiles=$(rg --hidden --files-with-matches --no-messages $1 | fzf --multi --preview $FZF_PREVIEW_CMD --bind $FZF_CMD_LINE_KEY_BINDINGS | tr '\n' ' ' | head -c -1)
+  if [ -z $replacefiles ]; then return 1; fi
   # do the replacement
   sed -e 's/'$1'/'$2'/g' -i '' $replacefiles
 }
