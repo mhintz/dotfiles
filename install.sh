@@ -2,16 +2,18 @@ THIS_DIR=$(dirname $(readlink -f $0))
 
 # will need to have homebrew and oh my zsh installed
 
-# initial install, some other stuff requires this
+# brew
+brew bundle install --file=$THIS_DIR/Brewfile
+
+# initial rustup installs, some other stuff requires this
 brew install rustup
 rustup install stable
+rustup target add wasm32-unknown-unknown
+rustup component add clippy rls rust-analysis rust-src rustfmt
 
 # zprofile
 ln -s $THIS_DIR/.zprofile ~/.zprofile
 source ~/.zprofile
-
-# brew
-brew bundle install --file=$THIS_DIR/Brewfile
 
 # yarn (need to install contents of package.json manually)
 ln -s $THIS_DIR/package.json $(yarn global dir)/package.json
