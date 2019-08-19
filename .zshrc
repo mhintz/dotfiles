@@ -78,6 +78,7 @@ source $THIS_DIR/aliases.sh
 # default settings
 # export FZF_TMUX=1 # command-line fzf opens in a tmux split
 export FZF_CTRL_T_COMMAND='fd -H -E ".git"'
+export FZF_ALT_C_COMMAND='fd -H -t d'
 export FZF_DEFAULT_COMMAND='fd -H -E .git'
 
 # Use fd (https://github.com/sharkdp/fd) instead of the default find
