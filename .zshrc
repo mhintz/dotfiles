@@ -101,8 +101,22 @@ fbr() {
   git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
 }
 
+# key bindings for the fzf preview used in the following two functions
+local FZF_CMD_LINE_KEY_BINDINGS="ctrl-f:preview-down,ctrl-b:preview-up,ctrl-d:preview-page-down,ctrl-u:preview-page-up"
+
 # find-in-file with a pretty sick interface
 fif() {
   if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
-  rg --hidden --files-with-matches --no-messages $1 | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 6 $1 || rg --ignore-case --pretty --context 6 $1 {}" --bind "ctrl-f:preview-down,ctrl-b:preview-up,ctrl-d:preview-page-down,ctrl-u:preview-page-up"
+  local FZF_PREVIEW_CMD="highlight -O ansi -l --force {} 2> /dev/null | rg --colors 'match:bg:yellow' --pretty --context 8 $1"
+  rg --hidden --files-with-matches --no-messages $1 | fzf --preview $FZF_PREVIEW_CMD --bind $FZF_CMD_LINE_KEY_BINDINGS
+}
+
+# replace-in-file
+rif() {
+  if [ ! "$#" -gt 1 ]; then echo "Need two strings, one search and one replace!"; return 1; fi
+  setopt localoptions pipefail 2> /dev/null
+  local FZF_PREVIEW_CMD="highlight -O ansi -l --force {} 2> /dev/null | rg --colors 'match:bg:yellow' --pretty --context 8 $1"
+  replacefiles=$(rg --hidden --files-with-matches --no-messages $1 | fzf --multi --preview $FZF_PREVIEW_CMD --bind $FZF_CMD_LINE_KEY_BINDINGS | tr '\n' ' ' | head -c -1)
+  # do the replacement
+  sed -e 's/'$1'/'$2'/g' -i '' $replacefiles
 }
