@@ -18,6 +18,7 @@ Plug 'Raimondi/delimitMate'
 Plug 'editorconfig/editorconfig-vim'
 " utilities
 Plug 'junegunn/fzf.vim'
+Plug 'wincent/ferret'
 Plug 'scrooloose/nerdtree'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
@@ -236,6 +237,16 @@ augroup END
 imap <c-x><c-l> <plug>(fzf-complete-line)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 
+" Ferret
+" turn off automatic key mappings
+let g:FerretMap = 0
+" insist on rg
+let g:FerretExecutable='rg'
+" args to pass to rg
+let g:FerretExecutableArguments = {
+  \ 'rg': '--hidden'
+  \ }
+
 " CoC-NVIM
 
 " tab completion
@@ -339,6 +350,10 @@ nnoremap <leader>f :BLines<CR>
 nnoremap <leader>h :Helptags<CR>
 nnoremap <leader>P :History<CR>
 nnoremap <leader>C :Commands<CR>
+
+" ferret mappings
+nnoremap <leader>s :Ack<Space>
+nnoremap <leader>S :Acks<Space>
 
 " quickfix and location list window toggles
 nmap <leader>co :copen<CR>
