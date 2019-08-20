@@ -244,7 +244,7 @@ let g:FerretMap = 0
 let g:FerretExecutable='rg'
 " args to pass to rg
 let g:FerretExecutableArguments = {
-  \ 'rg': '--hidden'
+  \ 'rg': '--hidden --vimgrep --no-heading --no-config --max-columns 4096'
   \ }
 
 " CoC-NVIM
