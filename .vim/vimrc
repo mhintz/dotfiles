@@ -254,7 +254,7 @@ endfunction
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
+    execute 'vert bo help '.expand('<cword>')
   else
     call CocAction('doHover')
   endif
@@ -333,9 +333,12 @@ nnoremap <leader>qc :%bdelete<CR>
 " fzf-vim mappings
 nnoremap <C-p> :Files<CR>
 nnoremap <leader>a :Rg!<Space>
+nnoremap <leader>A :exec "Rg! ".expand("<cword>")<CR>
 nnoremap <leader>p :Buffers<CR>
 nnoremap <leader>f :BLines<CR>
 nnoremap <leader>h :Helptags<CR>
+nnoremap <leader>P :History<CR>
+nnoremap <leader>C :Commands<CR>
 
 " quickfix and location list window toggles
 nmap <leader>co :copen<CR>
