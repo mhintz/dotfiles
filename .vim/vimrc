@@ -352,8 +352,8 @@ nnoremap <leader>P :History<CR>
 nnoremap <leader>C :Commands<CR>
 
 " ferret mappings
-nnoremap <leader>s :Ack<Space>
-nnoremap <leader>S :Acks<Space>
+nnoremap <leader>S :Ack<Space>
+nnoremap <leader>SR :Acks<Space>
 
 " quickfix and location list window toggles
 nmap <leader>co :copen<CR>
@@ -399,6 +399,9 @@ nnoremap Q q
 
 " clear search highlights if they add visual clutter
 noremap <leader>dh :nohlsearch<CR>
+
+" start typing a subsitution command for an identifier within a file
+nmap <leader>s yiw:%s/<C-R>"/
 
 " remove trailing whitespace
 nnoremap <leader>ds :%s/\s\+$//e<CR>

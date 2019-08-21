@@ -78,4 +78,6 @@ alias gitpl='git pull'
 alias gitpr='git pull --rebase'
 alias gitpo='git push origin'
 alias gsl='git stash list'
+alias gf='git fetch --no-tags'
+alias gr='git restore'
 
