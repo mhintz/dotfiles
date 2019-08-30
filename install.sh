@@ -10,6 +10,7 @@ brew install rustup
 rustup install stable
 rustup target add wasm32-unknown-unknown
 rustup component add clippy rls rust-analysis rust-src rustfmt
+rustup component add rustfmt --toolchain nightly
 
 # zprofile
 ln -s $THIS_DIR/.zprofile ~/.zprofile

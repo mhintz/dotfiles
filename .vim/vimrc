@@ -21,6 +21,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'wincent/ferret'
 Plug 'scrooloose/nerdtree'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-rls', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
@@ -279,6 +280,7 @@ nmap <leader>rsc :CocRestart<CR>
 
 " conditional keybindings scoped to certain file types
 let s:CoC_Whitelist = ["typescript", "typescript.tsx", "python", "rust", "go", "vim", "help"]
+let s:CoC_Prettier_Types = ["typescript", "typescript.tsx", "javascript", "javascript.jsx"]
 function! CoC_key_maps()
   if (index(s:CoC_Whitelist, &filetype) >= 0)
     " keymaps for diagnostic info
@@ -298,6 +300,10 @@ function! CoC_key_maps()
     " these commands don't work as expected on the filetypes where CoC is set up (right now)
     " nmap <buffer> <silent> gd <Plug>(coc-declaration)
     " nmap <buffer> <silent> gf <Plug>(coc-openlink)
+  endif
+  " prettier keybind
+  if (index(s:CoC_Prettier_Types, &filetype) >= 0)
+    nmap <buffer> <leader>F :CocCommand prettier.formatFile<CR>
   endif
 endfunction
 
@@ -401,7 +407,7 @@ nnoremap Q q
 noremap <leader>dh :nohlsearch<CR>
 
 " start typing a subsitution command for an identifier within a file
-nmap <leader>s yiw:%s/<C-R>"/
+nnoremap <leader>s yiW:%s/<C-R>"/
 
 " remove trailing whitespace
 nnoremap <leader>ds :%s/\s\+$//e<CR>

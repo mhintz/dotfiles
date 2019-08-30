@@ -108,8 +108,9 @@ local FZF_CMD_LINE_KEY_BINDINGS="ctrl-f:preview-down,ctrl-b:preview-up,ctrl-d:pr
 # find-in-file with a pretty sick interface
 fif() {
   if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
-  local FZF_PREVIEW_CMD="highlight -O ansi -l --force {} 2> /dev/null | rg --colors 'match:bg:yellow' --pretty --context 8 $1"
-  rg --hidden --files-with-matches --no-messages $1 | fzf --preview $FZF_PREVIEW_CMD --bind $FZF_CMD_LINE_KEY_BINDINGS
+  local regex="$1"
+  local FZF_PREVIEW_CMD="highlight -O ansi -l --force {} 2> /dev/null | rg --colors 'match:bg:yellow' --pretty --context 8 -e \"$regex\""
+  rg --hidden --files-with-matches --no-messages "$regex" | fzf --preview "$FZF_PREVIEW_CMD" --bind $FZF_CMD_LINE_KEY_BINDINGS
 }
 
 # replace-in-file
