@@ -31,6 +31,7 @@ Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
 " Plug 'ervandew/supertab'
 " Plug 'craigemery/vim-autotag'
 " Plug 'jason0x43/vim-js-indent'
+" Plug 'tpope/vim-unimpaired'
 call plug#end()
 
 " compatibility mode
@@ -305,6 +306,9 @@ function! CoC_key_maps()
   " prettier keybind
   if (index(s:CoC_Prettier_Types, &filetype) >= 0)
     nmap <buffer> <leader>F :CocCommand prettier.formatFile<CR>
+  endif
+  if (index(s:CoC_Prettier_Types, &filetype) >= 0)
+    nmap <buffer> <leader>L :CocCommand eslint.executeAutofix<CR>
   endif
 endfunction
 
