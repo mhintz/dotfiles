@@ -5,8 +5,6 @@
   "signature.triggerSignatureWait": 80,
   "codeLens.enable": false,
   "coc.preferences.extensionUpdateCheck": "never",
-  "coc.preferences.hoverTarget": "echo",
-  "prettier.onlyUseLocalVersion": true,
   "eslint.run": "onSave",
   "eslint.quiet": true,
   "eslint.autoFixOnSave": false,
