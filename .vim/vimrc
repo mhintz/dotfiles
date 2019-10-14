@@ -7,6 +7,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 " highlighting
 Plug 'sheerun/vim-polyglot'
+Plug 'alunny/pegjs-vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'rakr/vim-one'
 " ergonomics
@@ -53,8 +54,6 @@ syntax on
 if !has('nvim')
   set re=1
 endif
-" limit time which can be spent on syntax highlighting (ms)
-set redrawtime=50
 " actually not needed for neovim but helps for vim
 set ttyfast
 " lazily redraw the screen
