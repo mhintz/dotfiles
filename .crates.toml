@@ -1,4 +1,4 @@
 [v1]
-"cargo-edit 0.4.0 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-add", "cargo-rm", "cargo-upgrade"]
+"cargo-edit 0.4.1 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-add", "cargo-rm", "cargo-upgrade"]
 "sonic-pi-tool 0.1.0 (git+https://github.com/lpil/sonic-pi-tool/#9edf4e38ea7e94f110cfe9acdd3cbd9fd4728e89)" = ["sonic-pi-tool"]
 "wasm-pack 0.8.1 (registry+https://github.com/rust-lang/crates.io-index)" = ["wasm-pack"]

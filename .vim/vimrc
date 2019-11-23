@@ -1,7 +1,7 @@
 " plugins with vim-plug
 call plug#begin('~/.vim/bundle')
 " tmux integration
-Plug 'edkolev/tmuxline.vim'
+" Plug 'edkolev/tmuxline.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tmux-plugins/vim-tmux-focus-events'
@@ -133,7 +133,6 @@ set history=50
 
 " vim "UI" settings
 set ruler
-set noshowcmd
 set number
 set relativenumber
 set cmdheight=2
@@ -141,7 +140,7 @@ set cmdheight=2
 " settings which help CoC.nvim servers
 set nobackup
 set nowritebackup
-set updatetime=300
+set updatetime=1000
 
 " set vim directories for undo, backup, and swap files
 " set backup
@@ -175,10 +174,10 @@ set completeopt=menuone
 set shortmess+=c
 
 " netrw settings
-augroup NETRW
-  autocmd! FileType netrw
-  autocmd FileType netrw setl bufhidden=delete
-augroup END
+" augroup NETRW
+"   autocmd! FileType netrw
+"   autocmd FileType netrw setl bufhidden=delete
+" augroup END
 
 " ****** SET LEADER KEY ******
 let mapleader = " "
@@ -226,7 +225,10 @@ command! -bang -nargs=* Rg
   \   <bang>0)
 
 command! -bang -nargs=? -complete=dir Files
-  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+  \ call fzf#vim#files(<q-args>,
+  \   <bang>0 ? fzf#vim#with_preview('up:50%')
+  \           : fzf#vim#with_preview('right:40%'),
+  \   <bang>0)
 
 " for styling the FZF window
 augroup FZF
@@ -280,8 +282,8 @@ command! -nargs=0 Format :call CocAction('format')
 nmap <leader>rsc :CocRestart<CR>
 
 " conditional keybindings scoped to certain file types
-let s:CoC_Whitelist = ["typescript", "typescript.tsx", "python", "rust", "go", "vim", "help"]
-let s:CoC_Prettier_Types = ["typescript", "typescript.tsx", "javascript", "javascript.jsx"]
+let s:CoC_Whitelist = ["typescript", "typescript.tsx", "typescriptreact", "python", "rust", "go", "vim", "help"]
+let s:CoC_Prettier_Types = ["typescript", "typescript.tsx", "typescriptreact", "javascript", "javascript.jsx", "javascriptreact"]
 function! CoC_key_maps()
   if (index(s:CoC_Whitelist, &filetype) >= 0)
     " keymaps for diagnostic info
@@ -326,12 +328,6 @@ function! g:PrintFullFilePath()
     echo expand('%:p')
 endfunction
 
-" ****** Special Case Syntax ******
-augroup ThingOrgModeSyntax
-  autocmd!
-  autocmd BufNewFile,BufRead *.org set syntax=clojure
-augroup END
-
 " ****** KEYBINDINGS ******
 
 " remap so getting to the command line is one key away
@@ -352,11 +348,12 @@ nnoremap <leader>qa :qa<CR>
 nnoremap <leader>qc :%bdelete<CR>
 
 " fzf-vim mappings
-nnoremap <C-p> :Files<CR>
+nnoremap <C-p> :Files!<CR>
 nnoremap <leader>a :Rg!<Space>
-nnoremap <leader>A :exec "Rg! ".expand("<cword>")<CR>
+nnoremap <leader>A yiW:Rg! <C-R>"
 nnoremap <leader>p :Buffers<CR>
 nnoremap <leader>f :BLines<CR>
+nnoremap <leader>n yiW:BLines <C-R>"
 nnoremap <leader>h :Helptags<CR>
 nnoremap <leader>P :History<CR>
 nnoremap <leader>C :Commands<CR>
@@ -381,8 +378,6 @@ nnoremap <leader>bq :bdelete!<CR>
 nnoremap <leader>bb <C-^>
 
 " move between buffers / tabs
-noremap <leader>n :bnext<CR>
-noremap <leader>m :bprev<CR>
 noremap <leader><Left> :bprev<CR>
 noremap <leader><Right> :bnext<CR>
 
