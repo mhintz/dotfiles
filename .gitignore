@@ -6,3 +6,4 @@ nvim/autoload/plug.vim
 .vim/.backup
 .vim/.swp
 .vim/.undo
+vim.log
