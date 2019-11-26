@@ -1,7 +1,6 @@
 " plugins with vim-plug
 call plug#begin('~/.vim/bundle')
 " tmux integration
-" Plug 'edkolev/tmuxline.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tmux-plugins/vim-tmux-focus-events'
@@ -29,6 +28,7 @@ Plug 'neoclide/coc-rls', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
 " maybe
+" Plug 'edkolev/tmuxline.vim'
 " Plug 'ervandew/supertab'
 " Plug 'craigemery/vim-autotag'
 " Plug 'jason0x43/vim-js-indent'
@@ -53,9 +53,9 @@ syntax on
 " (optional) force the old regex engine, which is a bit faster
 if !has('nvim')
   set re=1
+  " actually not needed for neovim but helps for vim
+  set ttyfast
 endif
-" actually not needed for neovim but helps for vim
-set ttyfast
 " lazily redraw the screen
 set lazyredraw
 
@@ -206,10 +206,10 @@ let g:airline#extensions#tmuxline#enabled = 0
 let g:airline#extensions#tabline#enabled = 1
 
 " Tmuxline (styles get overriden incorrectly, need to refresh it on enter
-let g:tmuxline_powerline_separators = 0
+" let g:tmuxline_powerline_separators = 0
 
 " Supertab
-let g:SuperTabDefaultCompletionType = "context"
+" let g:SuperTabDefaultCompletionType = "context"
 
 " FZF + ripgrep
 
@@ -327,6 +327,12 @@ augroup END
 function! g:PrintFullFilePath()
     echo expand('%:p')
 endfunction
+
+" ****** Special Case Syntax ******
+augroup HmmLangSyntax
+  autocmd!
+  autocmd BufNewFile,BufRead *.hmm set syntax=scheme
+augroup END
 
 " ****** KEYBINDINGS ******
 
