@@ -457,7 +457,7 @@ cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 
 " use this to paste from system pasteboard
-nnoremap <leader>v :set paste<CR>"*gP:set nopaste<CR>
+nnoremap <leader>v :set paste<CR>"*gp:set nopaste<CR>
 
 " delete to end of line
 inoremap <C-k> <C-o>d$
