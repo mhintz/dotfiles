@@ -352,6 +352,8 @@ nnoremap <leader>qq :bp\|bd #<CR>
 nnoremap <leader>qw :q<CR>
 nnoremap <leader>qa :qa<CR>
 nnoremap <leader>qc :%bdelete<CR>
+nnoremap <leader>qb :%bdelete!<CR>
+nnoremap <leader>qn :enew<CR>
 
 " fzf-vim mappings
 nnoremap <C-p> :Files!<CR>
@@ -377,11 +379,6 @@ nmap <leader>lc :lclose<CR>
 
 " edit the last-edited file
 nnoremap <leader><leader> :e#<CR>
-
-" handling buffers
-nnoremap <leader>bn :enew<CR>
-nnoremap <leader>bd :bdelete<CR>
-nnoremap <leader>bq :bdelete!<CR>
 nnoremap <leader>bb <C-^>
 
 " move between buffers / tabs
