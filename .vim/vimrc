@@ -359,7 +359,8 @@ nnoremap <leader>a :Rg!<Space>
 nnoremap <leader>A yiW:Rg! <C-R>"
 nnoremap <leader>p :Buffers<CR>
 nnoremap <leader>f :BLines<CR>
-nnoremap <leader>n yiW:BLines <C-R>"
+nnoremap <leader>n yiW/<C-R>"<CR>
+nnoremap <leader>N yiW:BLines <C-R>"
 nnoremap <leader>h :Helptags<CR>
 nnoremap <leader>P :History<CR>
 nnoremap <leader>C :Commands<CR>
