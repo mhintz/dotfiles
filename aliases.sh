@@ -81,3 +81,5 @@ alias gsl='git stash list'
 alias gf='git fetch --no-tags'
 alias gr='git restore'
 
+# - General Sweetness
+alias weather='curl wttr.in'
