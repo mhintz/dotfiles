@@ -6,7 +6,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 " highlighting
 Plug 'sheerun/vim-polyglot'
-Plug 'alunny/pegjs-vim'
+Plug 'alunny/pegjs-vim', {'for': ['pegjs']}
 Plug 'junegunn/seoul256.vim'
 Plug 'rakr/vim-one'
 " ergonomics
@@ -18,8 +18,8 @@ Plug 'Raimondi/delimitMate'
 Plug 'editorconfig/editorconfig-vim'
 " utilities
 Plug 'junegunn/fzf.vim'
-Plug 'wincent/ferret'
-Plug 'scrooloose/nerdtree'
+Plug 'wincent/ferret', {'on': 'Acks'}
+Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
@@ -28,6 +28,7 @@ Plug 'neoclide/coc-rls', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
 " maybe
+" Plug 'vim-airline/vim-airline-themes'
 " Plug 'edkolev/tmuxline.vim'
 " Plug 'ervandew/supertab'
 " Plug 'craigemery/vim-autotag'
@@ -252,6 +253,10 @@ let g:FerretExecutableArguments = {
   \ }
 
 " CoC-NVIM
+
+" enables attaching the chrome inspector to the running coc process
+" via the ://inspect page
+" let g:coc_node_args = ['--nolazy', '--inspect-brk=6045']
 
 " tab completion
 inoremap <silent><expr> <TAB>

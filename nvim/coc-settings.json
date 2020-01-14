@@ -1,6 +1,6 @@
 {
   "suggest.autoTrigger": "trigger",
-  "suggest.timeout": 5000,
+  "suggest.timeout": 2000,
   "diagnostic.refreshAfterSave": true,
   "signature.triggerSignatureWait": 80,
   "codeLens.enable": false,
@@ -9,6 +9,7 @@
   "eslint.quiet": true,
   "eslint.autoFixOnSave": false,
   "eslint.filetypes": ["javascript", "javascript.jsx", "typescript", "typescript.tsx"],
+  "eslint.packageManager": "yarn",
   "tsserver.enableJavascript": false,
   "tsserver.npm": "~/.nodenv/shims/npm",
   "tsserver.formatOnType": false,
