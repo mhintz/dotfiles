@@ -80,6 +80,7 @@ alias gitpo='git push origin'
 alias gsl='git stash list'
 alias gf='git fetch --no-tags'
 alias gr='git restore'
+unalias gsd
 
 # - General Sweetness
 alias weather='curl wttr.in'
