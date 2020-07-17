@@ -202,6 +202,9 @@ let g:NERDTreeShowHidden=1
 " close the nerd tree window if it's the last one open
 " autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
+" pesky netrw buffers
+autocmd FileType netrw setl bufhidden=wipe
+
 " vim-airline disable tmuxline integration (it doesn't render correctly)
 let g:airline#extensions#tmuxline#enabled = 0
 let g:airline#extensions#tabline#enabled = 1
