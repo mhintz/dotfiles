@@ -117,13 +117,26 @@ fif() {
   rg --hidden --files-with-matches --no-messages "$regex" | fzf --preview "$FZF_PREVIEW_CMD" --bind $FZF_CMD_LINE_KEY_BINDINGS
 }
 
+ere_quote() {
+    sed 's/[]\.|$(){}?+*^]/\\&/g' <<< "$*"
+}
+
 # replace-in-file
 rif() {
   if [ ! "$#" -gt 1 ]; then echo "Need two strings, one search and one replace!"; return 1; fi
   setopt localoptions pipefail 2> /dev/null
   local FZF_PREVIEW_CMD="highlight -O ansi -l --force {} 2> /dev/null | rg --colors 'match:bg:yellow' --pretty --context 8 $1"
-  replacefiles=$(rg --hidden --files-with-matches --no-messages $1 | fzf --multi --preview $FZF_PREVIEW_CMD --bind $FZF_CMD_LINE_KEY_BINDINGS | tr '\n' ' ' | head -c -1)
+  replacefiles=$(rg --hidden --files-with-matches --no-messages "$1" | fzf --multi --preview $FZF_PREVIEW_CMD --bind $FZF_CMD_LINE_KEY_BINDINGS | tr '\n' ' ' | head -c -1)
   if [ -z $replacefiles ]; then return 1; fi
   # do the replacement
-  sed -e 's/'$1'/'$2'/g' -i '' $replacefiles
+  sed -e "s/$1/$2/g" -i '' $replacefiles
 }
+
+# work towards an incremental replace-in-file with preview
+# -> rg with vimgrep output
+# -> fzf per match
+# -> extract the filename from the match and pass to highlight
+# -> extract the line from the match and clip that line, plus context, from the output of highlight
+# -> pass the clipped result to rg again to highlight the match (rg --colors 'match:bg:yellow' --pretty --context X)
+# -> for any selected matches, use sed or awk to make the substitution at that line / column
+# rg --color always --vimgrep foobar | fzf --ansi --bind "ctrl-f:preview-down,ctrl-b:preview-up,ctrl-d:preview-page-down,ctrl-u:preview-page-up" --preview "echo {} | rg -o '\S+\s' | tr ':' '\n' | head -n 1 | xargs highlight -O ansi -l --force 2> /dev/null | rg --colors 'match:bg:yellow' --pretty --context 8 foobar"
