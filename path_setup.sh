@@ -22,19 +22,10 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 export RUST_BACKTRACE=1 # Rust error backtraces on by default
 
-# - NODE_PATH management
-# export NODE_PATH="/usr/local/lib/node_modules:$NODE_PATH"
-
 # - GOPATH
 export GOPATH="$HOME/code/go"
 export PATH="$PATH:$GOPATH/bin"
 eval "$(gimme 1.12.5)"
-
-# - rbenv aliases
-# eval "$(rbenv init -)"
-
-# PG
-# export PATH="$PATH:/Applications/Postgres.app/Contents/Versions/9.3/bin"
 
 # Heroku
 export PATH="$PATH:/usr/local/heroku/bin"
