@@ -70,6 +70,10 @@ THIS_DIR=$(dirname $0)
 
 source $THIS_DIR/aliases.sh
 
+# set up bat
+
+export BAT_THEME="ansi-dark"
+
 # set up fzf (https://github.com/junegunn/fzf) for the command line
 
 # load fzf zsh commands and completion
