@@ -102,7 +102,7 @@ _fzf_compgen_dir() {
 fbr() {
   local branches branch
   branches=$(git branch -vv) &&
-  branch=$(echo "$branches" | fzf +m) &&
+  branch=$(echo "$branches" | fzf +m --layout=reverse --height=20) &&
   git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
 }
 
