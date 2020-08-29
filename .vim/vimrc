@@ -172,7 +172,7 @@ set expandtab
 set softtabstop=2
 
 " completion menu options
-set completeopt=menuone
+set completeopt=menu,preview
 set shortmess+=c
 
 " netrw settings
@@ -377,8 +377,8 @@ nnoremap <leader>P :History<CR>
 nnoremap <leader>C :Commands<CR>
 
 " ferret mappings
-nnoremap <leader>S :Ack<Space>
-nnoremap <leader>SR :Acks<Space>
+nnoremap <leader>S yiW:Ack <C-R>"
+nnoremap <leader>SR yiW:Acks /<C-R>"
 
 " quickfix and location list window toggles
 nmap <leader>co :copen<CR>
