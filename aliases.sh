@@ -86,6 +86,7 @@ alias gitpo='git push origin'
 alias gsl='git stash list'
 alias gf='git fetch --no-tags'
 alias gr='git restore'
+alias glgg='git log --graph --full-history --color --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s"'
 unalias gsd
 
 # - General Sweetness
