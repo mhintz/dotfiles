@@ -1,26 +1,26 @@
 # basic status line
 set -g status "on"
-set -g status-style "bg=colour236 align=centre"
+set -g status-style "bg=colour237 align=centre"
 set -g status-justify "centre"
 
 set -g status-left-length "100"
-set -g status-left "#[fg=colour59,bg=colour74] #S #[fg=colour74,bg=colour59,nobold,nounderscore,noitalics]#[fg=colour153,bg=colour59] #F #[fg=colour59,bg=colour236,nobold,nounderscore,noitalics]#[fg=colour74,bg=colour236] #W #[fg=colour236,bg=colour236,nobold,nounderscore,noitalics]"
+set -g status-left "#[fg=brightblue,bg=black] #P "
 set -g status-right-length "100"
-set -g status-right "#[fg=colour236,bg=colour236,nobold,nounderscore,noitalics]#[fg=colour74,bg=colour236] %a #[fg=colour59,bg=colour236,nobold,nounderscore,noitalics]#[fg=colour153,bg=colour59] %b %d | %R #[fg=colour74,bg=colour59,nobold,nounderscore,noitalics]#[fg=colour59,bg=colour74] #H "
+set -g status-right "#[fg=brightblue,bg=black] %a %b %d | %R #[fg=black,bg=blue] #H "
 
 # borders
-set -g pane-border-style fg="colour59"
-set -g pane-active-border-style fg="colour126"
+set -g pane-border-style fg="black"
+set -g pane-active-border-style fg="green"
 
 # messages/commands
-set -g message-command-style "bg=colour59 fg=colour153"
-set -g message-style "bg=colour59 fg=colour153"
+set -g message-command-style "bg=black fg=brightblue"
+set -g message-style "bg=black fg=brightblue"
 
 # window status
-setw -g window-status-style "bg=colour236 fg=colour74 align=centre"
-setw -g window-status-activity-style "bg=colour236 fg=colour255 align=centre"
-setw -g window-status-current-style "bg=colour236 fg=colour255 align=centre"
+setw -g window-status-style "bg=colour237 fg=brightblue align=centre"
+setw -g window-status-current-style "bg=black fg=brightblue align=centre"
+setw -g window-status-activity-style "bg=red fg=black align=centre"
 
 setw -g window-status-separator ""
-setw -g window-status-format "#[fg=colour236,bg=colour236,nobold,nounderscore,noitalics]#[default] #I | #W #[fg=colour236,bg=colour236,nobold,nounderscore,noitalics]"
-setw -g window-status-current-format "#[fg=colour236,bg=colour59,nobold,nounderscore,noitalics]#[fg=colour153,bg=colour59] #I | #W #[fg=colour59,bg=colour236,nobold,nounderscore,noitalics]"
+setw -g window-status-format " #I | #W "
+setw -g window-status-current-format " #I | #W "
