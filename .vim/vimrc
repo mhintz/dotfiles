@@ -4,11 +4,11 @@ call plug#begin('~/.vim/bundle')
 Plug 'vim-airline/vim-airline'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tmux-plugins/vim-tmux-focus-events'
-" highlighting
+" highlighting / themes
 Plug 'sheerun/vim-polyglot'
 Plug 'alunny/pegjs-vim', {'for': ['pegjs']}
 Plug 'junegunn/seoul256.vim'
-Plug 'rakr/vim-one'
+Plug 'vim-airline/vim-airline-themes'
 " ergonomics
 Plug 'chaoren/vim-wordmotion'
 Plug 'tpope/vim-rsi'
@@ -29,7 +29,7 @@ Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
 Plug 'josa42/coc-go', { 'do': 'yarn install --frozen-lockfile' }
 " maybe
-" Plug 'vim-airline/vim-airline-themes'
+" Plug 'rakr/vim-one'
 " Plug 'edkolev/tmuxline.vim'
 " Plug 'ervandew/supertab'
 " Plug 'craigemery/vim-autotag'
@@ -105,8 +105,7 @@ colorscheme seoul256
 " colorscheme vice
 
 " set vim-airline theme to match
-let g:airline_theme='one'
-" let g:airline_theme='zenburn'
+let g:airline_theme='seoul256'
 
 " ****** SETTINGS ******
 " set synmaxcol=256
@@ -207,8 +206,7 @@ let g:NERDTreeShowHidden=1
 autocmd FileType netrw setl bufhidden=wipe
 
 " vim-airline disable tmuxline integration (it doesn't render correctly)
-let g:airline#extensions#tmuxline#enabled = 0
-let g:airline#extensions#tabline#enabled = 1
+let g:airline_extensions = ['tabline']
 
 " Tmuxline (styles get overriden incorrectly, need to refresh it on enter
 " let g:tmuxline_powerline_separators = 0

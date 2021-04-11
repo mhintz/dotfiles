@@ -48,6 +48,10 @@ makectags() {
     fi
 }
 
+howbig() {
+  ls -lh $1
+}
+
 space_seq() { seq $1 $2 | tr '\n' ' ' | head -c -1 }
 
 # find the commit which merged $2 into $1
