@@ -11,7 +11,6 @@ brew "black", link: false
 brew "boost"
 brew "libpng"
 brew "glib"
-brew "python@3.8"
 brew "cairo"
 brew "eigen"
 brew "cgal"
