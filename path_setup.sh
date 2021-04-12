@@ -23,12 +23,12 @@ export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 export RUST_BACKTRACE=1 # Rust error backtraces on by default
 
 # - GOPATH
-export GOPATH="$HOME/code/go"
-export PATH="$PATH:$GOPATH/bin"
-eval "$(gimme 1.12.5)"
+# export GOPATH="$HOME/code/go"
+# export PATH="$PATH:$GOPATH/bin"
+# eval "$(gimme 1.12.5)"
 
 # Heroku
-export PATH="$PATH:/usr/local/heroku/bin"
+# export PATH="$PATH:/usr/local/heroku/bin"
 
 # Use the assemblies under /usr/local for Mono's GAC.
 # See brew info mono for (slightly) more information on this

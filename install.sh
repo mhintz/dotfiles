@@ -7,6 +7,7 @@ brew bundle install --file=$THIS_DIR/Brewfile
 
 # initial rustup installs, some other stuff requires this
 brew install rustup
+rustup-init
 rustup install stable
 rustup target add wasm32-unknown-unknown
 rustup component add clippy rls rust-analysis rust-src rustfmt rust-docs
