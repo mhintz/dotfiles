@@ -9,7 +9,7 @@ brew bundle install --file=$THIS_DIR/Brewfile
 brew install rustup
 rustup install stable
 rustup target add wasm32-unknown-unknown
-rustup component add clippy rls rust-analysis rust-src rustfmt
+rustup component add clippy rls rust-analysis rust-src rustfmt rust-docs
 rustup component add rustfmt --toolchain nightly
 
 # zprofile
