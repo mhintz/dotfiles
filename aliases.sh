@@ -93,5 +93,8 @@ alias gr='git restore'
 alias glgg='git log --graph --full-history --color --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s"'
 unalias gsd
 
+# - k8s
+alias k='kubectl'
+
 # - General Sweetness
 alias weather='curl wttr.in'
