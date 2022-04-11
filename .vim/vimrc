@@ -313,7 +313,7 @@ function! CoC_key_maps()
   endif
   " prettier keybind
   if (index(s:CoC_Prettier_Types, &filetype) >= 0)
-    nmap <buffer> <leader>F :CocCommand prettier.formatFile<CR>
+    nmap <buffer> <leader>F :CocCommand eslint.executeAutofix<CR>
   endif
   if (index(s:CoC_Prettier_Types, &filetype) >= 0)
     nmap <buffer> <leader>L :CocCommand eslint.executeAutofix<CR>
