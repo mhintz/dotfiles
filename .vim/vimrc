@@ -3,7 +3,6 @@ call plug#begin('~/.vim/bundle')
 " tmux integration
 Plug 'vim-airline/vim-airline'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'tmux-plugins/vim-tmux-focus-events'
 " highlighting / themes
 Plug 'sheerun/vim-polyglot'
 Plug 'alunny/pegjs-vim', {'for': ['pegjs']}
@@ -25,8 +24,9 @@ Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-rls', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
+" Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
+Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build' }
+" Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
 Plug 'josa42/coc-go', { 'do': 'yarn install --frozen-lockfile' }
 " maybe
 " Plug 'rakr/vim-one'
@@ -412,6 +412,10 @@ noremap <C-z> <Nop>
 " macro stuff
 noremap q <Nop>
 nnoremap Q q
+
+" remap q to b for handy navigation
+nmap q b
+vmap q b
 
 " clear search highlights if they add visual clutter
 noremap <leader>dh :nohlsearch<CR>
