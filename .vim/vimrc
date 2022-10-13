@@ -340,6 +340,11 @@ augroup HmmLangSyntax
   autocmd BufNewFile,BufRead *.hmm set syntax=scheme
 augroup END
 
+augroup MDXSyntax
+  autocmd!
+  autocmd BufRead,BufNewFile *.mdx set filetype=markdown
+augroup END
+
 " ****** KEYBINDINGS ******
 
 " remap so getting to the command line is one key away
