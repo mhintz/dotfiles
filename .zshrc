@@ -13,6 +13,7 @@ DISABLE_AUTO_UPDATE="true"
 # much, much faster.
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
+KUBE_PS1_SYMBOL_ENABLE=false
 plugins=(git kube-ps1)
 
 source $ZSH/oh-my-zsh.sh
