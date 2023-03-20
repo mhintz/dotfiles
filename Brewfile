@@ -25,7 +25,6 @@ brew "cowsay"
 brew "ctags"
 brew "dashing"
 brew "go"
-brew "dep"
 brew "diffutils"
 brew "emacs", restart_service: true
 brew "node"
