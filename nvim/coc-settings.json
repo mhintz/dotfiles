@@ -11,7 +11,7 @@
   "eslint.filetypes": ["javascript", "javascript.jsx", "typescript", "typescript.tsx"],
   "eslint.packageManager": "yarn",
   "tsserver.enableJavascript": false,
-  "tsserver.npm": "~/.nodenv/shims/npm",
+  "tsserver.npm": "~/.volta/bin/npm",
   "tsserver.formatOnType": false,
   "typescript.implementationsCodeLens.enable": false,
   "typescript.referencesCodeLens.enable": false,
