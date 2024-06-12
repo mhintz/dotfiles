@@ -22,15 +22,18 @@ Plug 'wincent/ferret', {'on': 'Acks'}
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 " coc-nvim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neoclide/coc-prettier', {'do': 'yarn install'}
-Plug 'neoclide/coc-eslint', {'do': 'yarn install'}
+" install these JS/TS plugins manually:
 Plug 'neoclide/coc-tsserver', {'do': 'yarn install'}
-Plug 'neoclide/coc-rls', {'do': 'yarn install'}
+Plug 'neoclide/coc-eslint', {'do': 'yarn install'}
+Plug 'neoclide/coc-prettier', {'do': 'yarn install'}
+" rust / python / Go
+" Plug 'neoclide/coc-rls', {'do': 'yarn install'}
+Plug 'fannheyward/coc-rust-analyzer', { 'do': 'yarn install' }
 Plug 'pappasam/coc-jedi', { 'do': 'yarn install && yarn build', 'branch': 'main' }
 " Plug 'neoclide/coc-python', {'do': 'yarn install'}
-" Plug 'neoclide/coc-json', {'do': 'yarn install'}
 " Plug 'josa42/coc-go', { 'do': 'yarn install' }
-" maybe
+" Plug 'neoclide/coc-json', {'do': 'yarn install'}
+" maybe?
 " Plug 'rakr/vim-one'
 " Plug 'edkolev/tmuxline.vim'
 " Plug 'ervandew/supertab'
@@ -288,6 +291,7 @@ command! -nargs=0 Format :call CocAction('format')
 
 " keymaps for CoC
 nmap <leader>rsc :CocRestart<CR>
+nmap <leader>cl :CocList<CR>
 
 " conditional keybindings scoped to certain file types
 let s:CoC_Whitelist = ["typescript", "typescript.tsx", "typescriptreact", "python", "rust", "go", "vim", "help"]
@@ -331,10 +335,12 @@ augroup CoC
   autocmd User CocNvimInit call CoC_notify_init()
 augroup END
 
-" Random
+" Random utilities
 function! g:PrintFullFilePath()
-    echo expand('%:p')
+    echohl MoreMsg | echo expand('%:p') | echohl None
 endfunction
+
+nnoremap <leader>wf :exec PrintFullFilePath()<CR>
 
 " ****** Special Case Syntax ******
 augroup HmmLangSyntax

@@ -10,6 +10,8 @@
   "eslint.autoFixOnSave": false,
   "eslint.filetypes": ["javascript", "javascript.jsx", "typescript", "typescript.tsx"],
   "eslint.packageManager": "yarn",
+  "inlayHint.filetypes": [],
+  "rust-analyzer.server.path": "~/.rustup/toolchains/stable-aarch64-apple-darwin/bin/rust-analyzer",
   "tsserver.enableJavascript": false,
   "tsserver.npm": "~/.volta/bin/npm",
   "tsserver.formatOnType": false,

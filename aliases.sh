@@ -62,7 +62,7 @@ find_merge_for() {
 # see the diff which branch $2 makes from branch $1 (like the github "compare" view)
 gcompare () {
   if [ ! "$#" -eq 2 ]; then echo "Need two branches to compare!"; return 1; fi
-  git diff $(git merge-base $1 $2)..$2
+  git diff -w $(git merge-base $1 $2)..$2
 }
 
 # - Cargo
