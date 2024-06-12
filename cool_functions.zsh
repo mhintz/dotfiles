@@ -42,3 +42,16 @@ rif() {
 # -> pass the clipped result to rg again to highlight the match (rg --colors 'match:bg:yellow' --pretty --context X)
 # -> for any selected matches, use sed or awk to make the substitution at that line / column
 # rg --color always --vimgrep foobar | fzf --ansi --bind "ctrl-f:preview-down,ctrl-b:preview-up,ctrl-d:preview-page-down,ctrl-u:preview-page-up" --preview "echo {} | rg -o '\S+\s' | tr ':' '\n' | head -n 1 | xargs highlight -O ansi -l --force 2> /dev/null | rg --colors 'match:bg:yellow' --pretty --context 8 foobar"
+
+# "Open PR"
+# Tags two arguments:
+# 1: line number in a file
+# 2: name of the file
+# Uses those arguments, plus the github API, to find the PR associated with adding that line / the most recent git blame change for that line of code
+function opr {
+  if [ ! "$#" -eq 2 ]; then echo "Need a line number and a file name"; return 1; fi
+  local line_num="$1"
+  local file_name="$2"
+  local commit_sha=$(git blame -L $1 -wCCC $2 | head -n 1 | rg -e '^[\d\w]+' -o)
+  gh api "/repos/{owner}/{repo}/commits/$commit_sha/pulls" | jq -r '.[0]._links.html.href' | xargs open
+}
