@@ -16,7 +16,7 @@ fif() {
   if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
   local regex="$1"
   local FZF_PREVIEW_CMD="highlight -O ansi -l --force {} 2> /dev/null | rg --colors 'match:bg:yellow' --pretty --context 8 -e \"$regex\""
-  rg --hidden --files-with-matches --no-messages "$regex" | fzf --preview "$FZF_PREVIEW_CMD" --bind $FZF_CMD_LINE_KEY_BINDINGS
+  rg --hidden --files-with-matches --no-messages "$regex" | fzf --multi --preview "$FZF_PREVIEW_CMD" --bind $FZF_CMD_LINE_KEY_BINDINGS
 }
 
 ere_quote() {
