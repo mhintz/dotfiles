@@ -33,6 +33,23 @@ Plug 'pappasam/coc-jedi', { 'do': 'yarn install && yarn build', 'branch': 'main'
 " Plug 'neoclide/coc-python', {'do': 'yarn install'}
 " Plug 'josa42/coc-go', { 'do': 'yarn install' }
 " Plug 'neoclide/coc-json', {'do': 'yarn install'}
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
+" AI Stuff
+
+" Plug 'github/copilot.vim'
+
+" Avante Deps
+Plug 'nvim-lua/plenary.nvim'
+Plug 'MunifTanjim/nui.nvim'
+" Plug 'MeanderingProgrammer/render-markdown.nvim'
+" Avante extension
+" Plug 'yetone/avante.nvim', { 'branch': 'main', 'do': 'make BUILD_FROM_SOURCE=true' }
+
+" Windsurf extension
+Plug 'hrsh7th/nvim-cmp'
+Plug 'Exafunction/windsurf.nvim'
+
 " maybe?
 " Plug 'rakr/vim-one'
 " Plug 'edkolev/tmuxline.vim'
@@ -142,6 +159,7 @@ set ruler
 set number
 set relativenumber
 set cmdheight=1
+set laststatus=3
 
 " settings which help CoC.nvim servers
 set nobackup
@@ -243,12 +261,17 @@ command! -bang -nargs=? -complete=dir Files
 augroup FZF
   autocmd! FileType fzf
   autocmd  FileType fzf set laststatus=0 noshowmode noruler
-    \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+    \| autocmd BufLeave <buffer> set laststatus=3 showmode ruler
 augroup END
 
 " some fun fzf completions
 imap <c-x><c-l> <plug>(fzf-complete-line)
 imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-p> <plug>(fzf-complete-path)
+
+" copilot to use ctrl-l for accepting completions
+imap <silent><script><expr> <c-l> copilot#Accept("")
+let g:copilot_no_tab_map = v:true
 
 " Ferret
 " turn off automatic key mappings
@@ -259,6 +282,26 @@ let g:FerretExecutable='rg'
 let g:FerretExecutableArguments = {
   \ 'rg': '--hidden --vimgrep --no-heading --no-config --max-columns 4096'
   \ }
+
+" vim-go
+
+" disable code completion to avoid interfering with coc-nvim
+let g:go_code_completion_enabled = 0
+
+" disable commands that run on save
+let g:go_fmt_autosave = 0
+let g:go_imports_autosave = 0
+let g:go_mod_fmt_autosave = 0
+
+augroup VimGo
+  autocmd!
+  autocmd FileType go nmap <buffer> <leader>F :GoFmt<CR>
+  autocmd FileType gomod nmap <buffer> <leader>F :GoModFmt<CR>
+  autocmd FileType go nmap <buffer> <leader>I :GoImports<CR>
+  autocmd FileType go nmap <buffer> <leader>K :GoDoc<CR>
+  autocmd FileType go nmap <buffer> <C-]> :GoDef<CR>
+  autocmd FileType go nmap <buffer> <leader>R :GoRename<CR>
+augroup END
 
 " CoC-NVIM
 
@@ -294,17 +337,17 @@ nmap <leader>rsc :CocRestart<CR>
 nmap <leader>cl :CocList<CR>
 
 " conditional keybindings scoped to certain file types
-let s:CoC_Whitelist = ["typescript", "typescript.tsx", "typescriptreact", "python", "rust", "go", "vim", "help"]
+let s:CoC_File_Types = ["typescript", "typescript.tsx", "typescriptreact", "python", "rust", "vim", "help"]
 let s:CoC_Prettier_Types = ["typescript", "typescript.tsx", "typescriptreact", "javascript", "javascript.jsx", "javascriptreact"]
 function! CoC_key_maps()
-  if (index(s:CoC_Whitelist, &filetype) >= 0)
+  if (index(s:CoC_File_Types, &filetype) >= 0)
     " keymaps for diagnostic info
     nmap <buffer> <silent> <leader>D <Plug>(coc-diagnostic-info)
     nmap <buffer> <silent> [c <Plug>(coc-diagnostic-prev)
     nmap <buffer> <silent> ]c <Plug>(coc-diagnostic-next)
     " keymaps for calling the show_documentation function defined above
-    nnoremap <buffer> <silent> <leader>K :call <SID>show_documentation()<CR>
-    nnoremap <buffer> <silent> gh :call <SID>show_documentation()<CR>
+    nnoremap <buffer> <leader>K :call <SID>show_documentation()<CR>
+    nnoremap <buffer> gh :call <SID>show_documentation()<CR>
     " keymaps for jumping around the code
     nmap <buffer> <silent> <C-]> <Plug>(coc-definition)
     nmap <buffer> <silent> gt <Plug>(coc-type-definition)
@@ -377,6 +420,7 @@ nnoremap <leader>qn :enew<CR>
 " fzf-vim mappings
 nnoremap <C-p> :Files!<CR>
 nnoremap <leader>a :Rg!<Space>
+" nnoremap <leader>g :Rg!<Space>
 nnoremap <leader>A yiW:Rg! <C-R>"
 nnoremap <leader>p :Buffers<CR>
 nnoremap <leader>f :BLines<CR>
@@ -488,3 +532,52 @@ nnoremap <C-M-j> mz:m+<cr>`z
 nnoremap <C-M-k> mz:m-2<cr>`z
 vnoremap <C-M-j> :m'>+<cr>`<my`>mzgv`yo`z
 vnoremap <C-M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+
+" Avante setup
+" autocmd! User avante.nvim
+" lua << EOF
+" require('avante').setup({})
+" EOF
+
+" Windsurf setup
+lua << EOF
+-- set up nvim-cmp
+local cmp = require('cmp')
+cmp.setup({
+  completion = {
+    autocomplete = false,
+  },
+  window = {
+    -- completion = cmp.config.window.bordered(),
+    -- documentation = cmp.config.window.bordered(),
+  },
+  mapping = cmp.mapping.preset.insert({
+    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-l>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.abort(),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    ['<Tab>'] = function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      else
+        fallback()
+      end
+    end,
+    ['<S-Tab>'] = function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      else
+        fallback()
+      end
+    end,
+  }),
+  sources = {
+    { name = 'codeium' }
+  },
+})
+
+-- set up codeium / windsurf
+require('codeium').setup({})
+EOF
