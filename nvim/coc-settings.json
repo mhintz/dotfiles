@@ -11,6 +11,13 @@
   "eslint.filetypes": ["javascript", "javascript.jsx", "typescript", "typescript.tsx"],
   "eslint.packageManager": "yarn",
   "inlayHint.filetypes": [],
+  "languageserver": {
+    "golang": {
+      "command": "gopls",
+      "filetypes": ["go"],
+      "rootPatterns": ["go.mod"]
+    }
+  },
   "rust-analyzer.server.path": "~/.rustup/toolchains/stable-aarch64-apple-darwin/bin/rust-analyzer",
   "tsserver.enableJavascript": false,
   "tsserver.npm": "~/.volta/bin/npm",
