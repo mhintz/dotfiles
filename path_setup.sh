@@ -17,6 +17,9 @@ export MANPATH="/usr/local/man:$MANPATH"
 # homebrew library path
 export LIBRARY_PATH="$LIBRARY_PATH:/usr/local/lib"
 
+# new .local thing
+export PATH="$PATH:$HOME/.local/bin"
+
 # - Rust
 export PATH="$HOME/.cargo/bin:$PATH"
 export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
