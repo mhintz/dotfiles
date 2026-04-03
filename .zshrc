@@ -5,15 +5,17 @@ export ZSH=${HOME}/.oh-my-zsh
 
 ZSH_THEME="robbyrussell"
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
+# disable oh-my-zsh bi-weekly auto-update checks.
 DISABLE_AUTO_UPDATE="true"
 
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
+# Disable oh-my-zsh marking untracked files under VCS as dirty.
+# This makes repository status check for large repositories much, much faster.
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
+# Disable kube-ps1 symbol usage
 KUBE_PS1_SYMBOL_ENABLE=false
+
+# Enable oh-my-zsh plugins
 plugins=(git kube-ps1)
 
 source $ZSH/oh-my-zsh.sh
