@@ -13,7 +13,7 @@ vim.keymap.set("v", "<leader>fC", function()
   vim.notify(string.format("Copied: %s", result), vim.log.levels.INFO)
 end, { desc = "Copy file path with line range" }) 
 
--- Search and paste import strings
+-- Search and paste TS import strings
 -- requires: https://github.com/folke/snacks.nvim/blob/main/docs/picker.md
 vim.keymap.set("n", "<leader>i", function()
   local target_buf = vim.api.nvim_get_current_buf()

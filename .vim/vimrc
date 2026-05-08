@@ -71,7 +71,9 @@ filetype plugin indent on
 " ***** THEME AND HIGHLIGHTING ******
 
 " syntax highlighting
-syntax on
+if !has('nvim')
+  syntax on
+endif
 
 " optimizations for rendering speed
 " (optional) force the old regex engine, which is a bit faster
