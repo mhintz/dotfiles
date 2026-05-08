@@ -40,15 +40,15 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " Plug 'github/copilot.vim'
 
 " Avante Deps
-Plug 'nvim-lua/plenary.nvim'
-Plug 'MunifTanjim/nui.nvim'
+" Plug 'nvim-lua/plenary.nvim'
+" Plug 'MunifTanjim/nui.nvim'
 " Plug 'MeanderingProgrammer/render-markdown.nvim'
 " Avante extension
 " Plug 'yetone/avante.nvim', { 'branch': 'main', 'do': 'make BUILD_FROM_SOURCE=true' }
 
 " Windsurf extension
-Plug 'hrsh7th/nvim-cmp'
-Plug 'Exafunction/windsurf.nvim'
+" Plug 'hrsh7th/nvim-cmp'
+" Plug 'Exafunction/windsurf.nvim'
 
 " maybe?
 " Plug 'rakr/vim-one'
@@ -425,7 +425,7 @@ nnoremap <leader>A yiW:Rg! <C-R>"
 nnoremap <leader>p :Buffers<CR>
 nnoremap <leader>f :BLines<CR>
 nnoremap <leader>n yiW/<C-R>"<CR>
-nnoremap <leader>N yiW:BLines <C-R>"
+nnoremap <leader>N yiW:BLines <C-R>"<CR>
 nnoremap <leader>h :Helptags<CR>
 nnoremap <leader>P :History<CR>
 nnoremap <leader>C :Commands<CR>
@@ -540,44 +540,44 @@ vnoremap <C-M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 " EOF
 
 " Windsurf setup
-lua << EOF
--- set up nvim-cmp
-local cmp = require('cmp')
-cmp.setup({
-  completion = {
-    autocomplete = false,
-  },
-  window = {
-    -- completion = cmp.config.window.bordered(),
-    -- documentation = cmp.config.window.bordered(),
-  },
-  mapping = cmp.mapping.preset.insert({
-    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-l>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.abort(),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-    ['<Tab>'] = function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      else
-        fallback()
-      end
-    end,
-    ['<S-Tab>'] = function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      else
-        fallback()
-      end
-    end,
-  }),
-  sources = {
-    { name = 'codeium' }
-  },
-})
+" lua << EOF
+" -- set up nvim-cmp
+" local cmp = require('cmp')
+" cmp.setup({
+"   completion = {
+"     autocomplete = false,
+"   },
+"   window = {
+"     -- completion = cmp.config.window.bordered(),
+"     -- documentation = cmp.config.window.bordered(),
+"   },
+"   mapping = cmp.mapping.preset.insert({
+"     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+"     ['<C-f>'] = cmp.mapping.scroll_docs(4),
+"     ['<C-Space>'] = cmp.mapping.complete(),
+"     ['<C-l>'] = cmp.mapping.complete(),
+"     ['<C-e>'] = cmp.mapping.abort(),
+"     ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+"     ['<Tab>'] = function(fallback)
+"       if cmp.visible() then
+"         cmp.select_next_item()
+"       else
+"         fallback()
+"       end
+"     end,
+"     ['<S-Tab>'] = function(fallback)
+"       if cmp.visible() then
+"         cmp.select_prev_item()
+"       else
+"         fallback()
+"       end
+"     end,
+"   }),
+"   sources = {
+"     { name = 'codeium' }
+"   },
+" })
 
--- set up codeium / windsurf
-require('codeium').setup({})
-EOF
+" -- set up codeium / windsurf
+" require('codeium').setup({})
+" EOF
