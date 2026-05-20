@@ -271,10 +271,6 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-p> <plug>(fzf-complete-path)
 
-" copilot to use ctrl-l for accepting completions
-imap <silent><script><expr> <c-l> copilot#Accept("")
-let g:copilot_no_tab_map = v:true
-
 " Ferret
 " turn off automatic key mappings
 let g:FerretMap = 0
@@ -583,3 +579,8 @@ vnoremap <C-M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 " -- set up codeium / windsurf
 " require('codeium').setup({})
 " EOF
+
+" Copilot setup
+" copilot to use ctrl-l for accepting completions
+" imap <silent><script><expr> <c-l> copilot#Accept("")
+" let g:copilot_no_tab_map = v:true

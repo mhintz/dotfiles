@@ -529,6 +529,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
     if not client then return end
     local bopts = { buffer = ev.buf }
 
+    map('n', '<leader>e', vim.diagnostic.open_float, bopts)
+
     -- Hover (LSP doesn't auto-bind K because of the global K mapping).
     map('n', '<leader>K', vim.lsp.buf.hover, bopts)
     -- Replacements for the old vim-go keymaps.
